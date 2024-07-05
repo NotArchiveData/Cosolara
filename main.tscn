@@ -18,6 +18,7 @@ script = ExtResource("1_so1ve")
 [node name="table" type="StaticBody3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="table"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.99459, 0)
 shape = SubResource("BoxShape3D_vq0ci")
 
 [node name="wall" type="StaticBody3D" parent="."]
@@ -51,6 +52,8 @@ shape = SubResource("BoxShape3D_pc74m")
 [node name="Die" parent="." instance=ExtResource("1_oypbc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.720691, 2, -3.559)
 
+[node name="Die2" parent="." instance=ExtResource("1_oypbc")]
+
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.0348995, 0.999391, 0, -0.999391, 0.0348995, 0, 27.7224, -1.63461)
 fov = 58.633
@@ -73,3 +76,4 @@ text = "roll: ?"
 horizontal_alignment = 1
 
 [connection signal="roll_finished" from="Die" to="." method="_on_die_roll_finished"]
+[connection signal="roll_finished" from="Die2" to="." method="_on_die_2_roll_finished"]

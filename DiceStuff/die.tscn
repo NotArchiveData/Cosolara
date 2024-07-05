@@ -46,7 +46,6 @@ opposite_side = 2
 
 [node name="DieRayCast6" parent="Raycasts" instance=ExtResource("3_0hvtr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
-target_position = Vector3(2.08165e-12, -0.1, 2.08165e-12)
 opposite_side = 3
 
 [connection signal="sleeping_state_changed" from="." to="." method="_on_sleeping_state_changed"]
