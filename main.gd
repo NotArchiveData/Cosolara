@@ -10,14 +10,14 @@ var die2 = 0
 func _on_die_roll_finished(value):
 	die1_done = true
 	die1 = value
-	check()
+	is_diefinished()
 
 func _on_die_2_roll_finished(value):
 	die2_done = true
 	die2 = value
-	check()
+	is_diefinished()
 
-func check():
+func is_diefinished():
 	if die1_done && die2_done:
 		var die_value = die1 + die2
 		label.text = str(die_value)
