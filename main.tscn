@@ -1,8 +1,75 @@
-[gd_scene load_steps=2 format=3 uid="uid://06s5ka43cdbc"]
+[gd_scene load_steps=6 format=3 uid="uid://06s5ka43cdbc"]
 
 [ext_resource type="PackedScene" uid="uid://ui6yxjaoto5r" path="res://DiceStuff/die.tscn" id="1_oypbc"]
+[ext_resource type="Script" path="res://main.gd" id="1_so1ve"]
 
-[node name="Node" type="Node"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_vq0ci"]
+size = Vector3(100, 1, 100)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_mp05r"]
+bounce = 1.0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pc74m"]
+size = Vector3(1, 20, 20)
+
+[node name="Game" type="Node"]
+script = ExtResource("1_so1ve")
+
+[node name="table" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="table"]
+shape = SubResource("BoxShape3D_vq0ci")
+
+[node name="wall" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.6579, 4.91051, 0)
+physics_material_override = SubResource("PhysicsMaterial_mp05r")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="wall"]
+shape = SubResource("BoxShape3D_pc74m")
+
+[node name="wall2" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.4168, 4.91051, 0)
+physics_material_override = SubResource("PhysicsMaterial_mp05r")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="wall2"]
+shape = SubResource("BoxShape3D_pc74m")
+
+[node name="wall3" type="StaticBody3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2.20765, 4.91051, -9.33495)
+physics_material_override = SubResource("PhysicsMaterial_mp05r")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="wall3"]
+shape = SubResource("BoxShape3D_pc74m")
+
+[node name="wall4" type="StaticBody3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2.20765, 4.91051, 9.03573)
+physics_material_override = SubResource("PhysicsMaterial_mp05r")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="wall4"]
+shape = SubResource("BoxShape3D_pc74m")
 
 [node name="Die" parent="." instance=ExtResource("1_oypbc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.27931, 0, -3.559)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.720691, 2, -3.559)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.0348995, 0.999391, 0, -0.999391, 0.0348995, 0, 27.7224, -1.63461)
+fov = 58.633
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -200.0
+offset_top = -137.0
+offset_right = 200.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 100
+text = "roll: ?"
+horizontal_alignment = 1
+
+[connection signal="roll_finished" from="Die" to="." method="_on_die_roll_finished"]

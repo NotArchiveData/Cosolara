@@ -11,5 +11,10 @@ config_version=5
 [application]
 
 config/name="SoCFinal"
+run/main_scene="res://main.tscn"
 config/features=PackedStringArray("4.2", "Mobile")
 config/icon="res://icon.svg"
+
+[autoload]
+
+global="*res://global.gd"
