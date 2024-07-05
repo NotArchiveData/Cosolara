@@ -29,3 +29,7 @@ func _roll():
 	var throw_vector = Vector3(randf_range(-1, 1), 0, randf_range(-1, 1)).normalized()
 	angular_velocity = throw_vector * roll_strength / 2
 	apply_central_impulse(throw_vector * roll_strength)
+
+
+func _on_sleeping_state_changed():
+	pass # Replace with function body.
