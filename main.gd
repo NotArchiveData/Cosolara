@@ -16,7 +16,6 @@ func _on_die_2_roll_finished(value):
 func is_diefinished():
 	if die1 && die2:
 		var die_value = die1 + die2
-		label.text = str(die_value)
 		
 		die1 = 0
 		die2 = 0
