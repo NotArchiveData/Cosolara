@@ -1,10 +1,11 @@
-[gd_scene load_steps=14 format=3 uid="uid://06s5ka43cdbc"]
+[gd_scene load_steps=15 format=3 uid="uid://06s5ka43cdbc"]
 
 [ext_resource type="PackedScene" uid="uid://ui6yxjaoto5r" path="res://DiceStuff/die.tscn" id="1_oypbc"]
 [ext_resource type="Script" path="res://main.gd" id="1_so1ve"]
 [ext_resource type="PackedScene" uid="uid://deohpkwi5s7uf" path="res://Tiles/default_tile.tscn" id="3_d7wbp"]
 [ext_resource type="Script" path="res://placeholder_tiles.gd" id="3_wn73g"]
 [ext_resource type="Script" path="res://cam.gd" id="4_bu5e8"]
+[ext_resource type="PackedScene" uid="uid://gdconibb77g2" path="res://House/house.tscn" id="6_pkaxb"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vq0ci"]
 size = Vector3(17.0289, 1, 17.7095)
@@ -299,6 +300,7 @@ script = ExtResource("4_bu5e8")
 
 [node name="floor" type="MeshInstance3D" parent="making stuff look nicer"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.2529, -1.74644, 35.213)
+visible = false
 mesh = SubResource("PlaneMesh_ev2au")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_2hwn4")
@@ -322,6 +324,9 @@ grow_vertical = 0
 theme_override_font_sizes/font_size = 100
 text = "roll: ?"
 horizontal_alignment = 1
+
+[node name="Node3D" parent="." instance=ExtResource("6_pkaxb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.7296, 0, 58.5352)
 
 [connection signal="roll_finished" from="diestuff/Die" to="." method="_on_die_roll_finished"]
 [connection signal="roll_finished" from="diestuff/Die2" to="." method="_on_die_2_roll_finished"]
