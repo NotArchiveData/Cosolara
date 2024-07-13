@@ -158,6 +158,138 @@ script = ExtResource("3_wn73g")
 [node name="Tile3" parent="Tiles" instance=ExtResource("3_d7wbp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.42447, 0, -11.0711)
 
+[node name="Tile6" parent="Tiles" instance=ExtResource("3_d7wbp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.047533, 0, -22.1203)
+
+[node name="Tile9" parent="Tiles" instance=ExtResource("3_d7wbp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.708, 0, 0)
+
+[node name="Tile10" parent="Tiles" instance=ExtResource("3_d7wbp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.3311, 0, -11.0711)
+
+[node name="Tile11" parent="Tiles" instance=ExtResource("3_d7wbp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.708, 0, -22.1203)
+
+[node name="Tile7" parent="Tiles" instance=ExtResource("3_d7wbp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.7984, 0, -22.1203)
+
+[node name="Tile8" parent="Tiles" instance=ExtResource("3_d7wbp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.42447, 0, -33.1914)
+
+[node name="Tile4" parent="Tiles" instance=ExtResource("3_d7wbp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.5535, 0, 0)
+
+[node name="Tile13" parent="Tiles" instance=ExtResource("3_d7wbp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.7984, 0, 22.1255)
+
+[node name="Tile15" parent="Tiles" instance=ExtResource("3_d7wbp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.708, 0, 22.1255)
+
+[node name="Tile16" parent="Tiles" instance=ExtResource("3_d7wbp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.3311, 0, 11.0543)
+
+[node name="Tile17" parent="Tiles" instance=ExtResource("3_d7wbp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.5535, 0, 22.1255)
+
+[node name="Tile19" parent="Tiles" instance=ExtResource("3_d7wbp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.2857, 0, 0)
+
+[node name="Tile24" parent="Tiles" instance=ExtResource("3_d7wbp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 51.0409, 0, 0)
+
+[node name="Tile25" parent="Tiles" instance=ExtResource("3_d7wbp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44.667, 0, -11.0711)
+
+[node name="Tile26" parent="Tiles" instance=ExtResource("3_d7wbp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.2857, 0, 22.1255)
+
+[node name="Tile27" parent="Tiles" instance=ExtResource("3_d7wbp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.9118, 0, 11.0543)
+
+[node name="Tile30" parent="Tiles" instance=ExtResource("3_d7wbp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.7984, 0, 0)
+
+[node name="Tile32" parent="Tiles" instance=ExtResource("3_d7wbp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.047533, 0, 22.1255)
+
+[node name="Tile34" parent="Tiles" instance=ExtResource("3_d7wbp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.42447, 0, 11.0543)
+
+[node name="Tile38" parent="Tiles" instance=ExtResource("3_d7wbp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.1796, 0, 33.1712)
+
+[node name="Tile39" parent="Tiles" instance=ExtResource("3_d7wbp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.7984, 0, 44.2424)
+
+[node name="Tile40" parent="Tiles" instance=ExtResource("3_d7wbp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.5535, 0, 44.2424)
+
+[node name="Tile41" parent="Tiles" instance=ExtResource("3_d7wbp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.047533, 0, 66.3678)
+
+[node name="Tile42" parent="Tiles" instance=ExtResource("3_d7wbp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.7984, 0, 66.3678)
+
+[node name="Tile43" parent="Tiles" instance=ExtResource("3_d7wbp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.42447, 0, 55.2967)
+
+[node name="Tile44" parent="Tiles" instance=ExtResource("3_d7wbp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.5535, 0, 66.3678)
+
+[node name="Tile45" parent="Tiles" instance=ExtResource("3_d7wbp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.1796, 0, 55.2967)
+
+[node name="Tile47" parent="Tiles" instance=ExtResource("3_d7wbp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.4675, 0, 66.3678)
+
+[node name="Tile48" parent="Tiles" instance=ExtResource("3_d7wbp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.7167, 0, 66.3678)
+
+[node name="Tile51" parent="Tiles" instance=ExtResource("3_d7wbp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.7167, 0, 44.2538)
+
+[node name="Tile49" parent="Tiles" instance=ExtResource("3_d7wbp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.0906, 0, 55.2967)
+
+[node name="Tile50" parent="Tiles" instance=ExtResource("3_d7wbp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.33545, 0, 55.2967)
+
+[node name="Tile46" parent="Tiles" instance=ExtResource("3_d7wbp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.9118, 0, 55.2967)
+
+[node name="Tile28" parent="Tiles" instance=ExtResource("3_d7wbp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 51.0409, 0, 22.1255)
+
+[node name="Tile29" parent="Tiles" instance=ExtResource("3_d7wbp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44.667, 0, 11.0543)
+
+[node name="Tile52" parent="Tiles" instance=ExtResource("3_d7wbp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.2857, 0, 88.4771)
+
+[node name="Tile53" parent="Tiles" instance=ExtResource("3_d7wbp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.9118, 0, 77.4059)
+
+[node name="Tile54" parent="Tiles" instance=ExtResource("3_d7wbp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 51.0409, 0, 88.4771)
+
+[node name="Tile55" parent="Tiles" instance=ExtResource("3_d7wbp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.2857, 0, 110.603)
+
+[node name="Tile56" parent="Tiles" instance=ExtResource("3_d7wbp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.5535, 0, 88.4771)
+
+[node name="Tile57" parent="Tiles" instance=ExtResource("3_d7wbp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.5535, 0, 110.603)
+
+[node name="Tile58" parent="Tiles" instance=ExtResource("3_d7wbp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.1796, 0, 99.5314)
+
+[node name="Tile59" parent="Tiles" instance=ExtResource("3_d7wbp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.9118, 0, 99.5314)
+
+[node name="Tile60" parent="Tiles" instance=ExtResource("3_d7wbp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44.667, 0, 99.5314)
+
 [node name="making stuff look nicer" type="Node" parent="."]
 
 [node name="Camera3D" type="Camera3D" parent="making stuff look nicer"]
