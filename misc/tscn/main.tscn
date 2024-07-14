@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://06s5ka43cdbc"]
+[gd_scene load_steps=17 format=3 uid="uid://06s5ka43cdbc"]
 
 [ext_resource type="Script" path="res://misc/gd/main.gd" id="1_oedg3"]
 [ext_resource type="PackedScene" uid="uid://ui6yxjaoto5r" path="res://DiceStuff/die.tscn" id="2_jmah0"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://misc/gd/cam.gd" id="5_a885l"]
 [ext_resource type="PackedScene" uid="uid://bus83smxdui76" path="res://House/house.tscn" id="6_j58a5"]
 [ext_resource type="Script" path="res://control/housebutton/house_button.gd" id="7_hklrv"]
+[ext_resource type="Script" path="res://misc/tscn/road_button.gd" id="8_nxaqc"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vq0ci"]
 size = Vector3(17.0289, 1, 17.7095)
@@ -370,7 +371,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="Button" type="Button" parent="Control"]
+[node name="house" type="Button" parent="Control"]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -385,6 +386,22 @@ focus_mode = 0
 text = "house"
 script = ExtResource("7_hklrv")
 
+[node name="road" type="Button" parent="Control"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -685.0
+offset_top = -174.0
+offset_right = -371.0
+grow_horizontal = 0
+grow_vertical = 0
+focus_mode = 0
+text = "road"
+script = ExtResource("8_nxaqc")
+
 [connection signal="roll_finished" from="diestuff/Die" to="." method="_on_die_roll_finished"]
 [connection signal="roll_finished" from="diestuff/Die2" to="." method="_on_die_2_roll_finished"]
-[connection signal="pressed" from="Control/Button" to="Control/Button" method="_on_pressed"]
+[connection signal="pressed" from="Control/house" to="Control/house" method="_on_pressed"]
