@@ -6,3 +6,7 @@ var clay = 30
 var food = 80
 var ore = 30
 var coins = 100
+
+var housebuttonpressed = 0
+
+var house_collision = false
