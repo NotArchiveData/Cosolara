@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://06s5ka43cdbc"]
+[gd_scene load_steps=16 format=3 uid="uid://06s5ka43cdbc"]
 
 [ext_resource type="Script" path="res://misc/gd/main.gd" id="1_oedg3"]
 [ext_resource type="PackedScene" uid="uid://ui6yxjaoto5r" path="res://DiceStuff/die.tscn" id="2_jmah0"]
@@ -7,7 +7,6 @@
 [ext_resource type="Script" path="res://misc/gd/cam.gd" id="5_a885l"]
 [ext_resource type="PackedScene" uid="uid://bus83smxdui76" path="res://House/house.tscn" id="6_j58a5"]
 [ext_resource type="Script" path="res://control/housebutton/house_button.gd" id="7_hklrv"]
-[ext_resource type="PackedScene" uid="uid://cdqjxkpsa0wrw" path="res://Roads/road.tscn" id="8_ph1rl"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vq0ci"]
 size = Vector3(17.0289, 1, 17.7095)
@@ -39,12 +38,16 @@ script = ExtResource("1_oedg3")
 
 [node name="Die" parent="diestuff" instance=ExtResource("2_jmah0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.7207, 2, 11.441)
+collision_layer = 0
 
 [node name="Die2" parent="diestuff" instance=ExtResource("2_jmah0")]
+collision_layer = 0
 
 [node name="Dice 1 Border" type="Node3D" parent="diestuff"]
 
 [node name="table" type="StaticBody3D" parent="diestuff/Dice 1 Border"]
+collision_layer = 32768
+collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="diestuff/Dice 1 Border/table"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.158264, -4.06026, 0.284912)
@@ -52,6 +55,8 @@ shape = SubResource("BoxShape3D_vq0ci")
 
 [node name="wall" type="StaticBody3D" parent="diestuff/Dice 1 Border"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.82669, 4.91051, 0)
+collision_layer = 32768
+collision_mask = 0
 physics_material_override = SubResource("PhysicsMaterial_mp05r")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="diestuff/Dice 1 Border/wall"]
@@ -60,6 +65,8 @@ shape = SubResource("BoxShape3D_pc74m")
 
 [node name="wall2" type="StaticBody3D" parent="diestuff/Dice 1 Border"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.9243, 4.91051, 0)
+collision_layer = 32768
+collision_mask = 0
 physics_material_override = SubResource("PhysicsMaterial_mp05r")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="diestuff/Dice 1 Border/wall2"]
@@ -68,6 +75,8 @@ shape = SubResource("BoxShape3D_pc74m")
 
 [node name="wall3" type="StaticBody3D" parent="diestuff/Dice 1 Border"]
 transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, 3.37649, 4.91051, 6.0166)
+collision_layer = 32768
+collision_mask = 0
 physics_material_override = SubResource("PhysicsMaterial_mp05r")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="diestuff/Dice 1 Border/wall3"]
@@ -76,6 +85,8 @@ shape = SubResource("BoxShape3D_pc74m")
 
 [node name="wall4" type="StaticBody3D" parent="diestuff/Dice 1 Border"]
 transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, -3.24436, 4.91051, -6.2583)
+collision_layer = 32768
+collision_mask = 0
 physics_material_override = SubResource("PhysicsMaterial_mp05r")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="diestuff/Dice 1 Border/wall4"]
@@ -84,6 +95,8 @@ shape = SubResource("BoxShape3D_pc74m")
 
 [node name="wall5" type="StaticBody3D" parent="diestuff/Dice 1 Border"]
 transform = Transform3D(0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, 0.5, -3.31341, 4.91051, 5.98207)
+collision_layer = 32768
+collision_mask = 0
 physics_material_override = SubResource("PhysicsMaterial_mp05r")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="diestuff/Dice 1 Border/wall5"]
@@ -92,6 +105,8 @@ shape = SubResource("BoxShape3D_pc74m")
 
 [node name="wall6" type="StaticBody3D" parent="diestuff/Dice 1 Border"]
 transform = Transform3D(0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, 0.5, 3.16069, 4.91051, -6.15471)
+collision_layer = 32768
+collision_mask = 0
 physics_material_override = SubResource("PhysicsMaterial_mp05r")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="diestuff/Dice 1 Border/wall6"]
@@ -102,6 +117,8 @@ shape = SubResource("BoxShape3D_pc74m")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.2967, 0, 11.0935)
 
 [node name="table" type="StaticBody3D" parent="diestuff/Dice 2 Border"]
+collision_layer = 32768
+collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="diestuff/Dice 2 Border/table"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.158264, -4.06026, 0.284912)
@@ -109,6 +126,8 @@ shape = SubResource("BoxShape3D_vq0ci")
 
 [node name="wall" type="StaticBody3D" parent="diestuff/Dice 2 Border"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.82669, 4.91051, 0)
+collision_layer = 32768
+collision_mask = 0
 physics_material_override = SubResource("PhysicsMaterial_mp05r")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="diestuff/Dice 2 Border/wall"]
@@ -117,6 +136,8 @@ shape = SubResource("BoxShape3D_pc74m")
 
 [node name="wall2" type="StaticBody3D" parent="diestuff/Dice 2 Border"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.9243, 4.91051, 0)
+collision_layer = 32768
+collision_mask = 0
 physics_material_override = SubResource("PhysicsMaterial_mp05r")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="diestuff/Dice 2 Border/wall2"]
@@ -125,6 +146,8 @@ shape = SubResource("BoxShape3D_pc74m")
 
 [node name="wall3" type="StaticBody3D" parent="diestuff/Dice 2 Border"]
 transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, 3.37649, 4.91051, 6.0166)
+collision_layer = 32768
+collision_mask = 0
 physics_material_override = SubResource("PhysicsMaterial_mp05r")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="diestuff/Dice 2 Border/wall3"]
@@ -133,6 +156,8 @@ shape = SubResource("BoxShape3D_pc74m")
 
 [node name="wall4" type="StaticBody3D" parent="diestuff/Dice 2 Border"]
 transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, -3.24436, 4.91051, -6.2583)
+collision_layer = 32768
+collision_mask = 0
 physics_material_override = SubResource("PhysicsMaterial_mp05r")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="diestuff/Dice 2 Border/wall4"]
@@ -141,6 +166,8 @@ shape = SubResource("BoxShape3D_pc74m")
 
 [node name="wall5" type="StaticBody3D" parent="diestuff/Dice 2 Border"]
 transform = Transform3D(0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, 0.5, -3.31341, 4.91051, 5.98207)
+collision_layer = 32768
+collision_mask = 0
 physics_material_override = SubResource("PhysicsMaterial_mp05r")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="diestuff/Dice 2 Border/wall5"]
@@ -149,6 +176,8 @@ shape = SubResource("BoxShape3D_pc74m")
 
 [node name="wall6" type="StaticBody3D" parent="diestuff/Dice 2 Border"]
 transform = Transform3D(0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, 0.5, 3.16069, 4.91051, -6.15471)
+collision_layer = 32768
+collision_mask = 0
 physics_material_override = SubResource("PhysicsMaterial_mp05r")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="diestuff/Dice 2 Border/wall6"]
@@ -355,9 +384,6 @@ grow_vertical = 0
 focus_mode = 0
 text = "house"
 script = ExtResource("7_hklrv")
-
-[node name="Road" parent="." instance=ExtResource("8_ph1rl")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.8551, 0.468624, 33.3445)
 
 [connection signal="roll_finished" from="diestuff/Die" to="." method="_on_die_roll_finished"]
 [connection signal="roll_finished" from="diestuff/Die2" to="." method="_on_die_2_roll_finished"]
