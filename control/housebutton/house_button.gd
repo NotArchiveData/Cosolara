@@ -1,6 +1,6 @@
 extends Button
 
-@onready var houses = %Houses
+@onready var houses = %all_houses
 
 const GREEN = preload("res://House/green.tres")
 const RED = preload("res://House/red.tres")

@@ -6,7 +6,7 @@
 [ext_resource type="Script" path="res://misc/gd/placeholder_tiles.gd" id="3_wn73g"]
 [ext_resource type="Script" path="res://misc/gd/cam.gd" id="4_bu5e8"]
 [ext_resource type="PackedScene" uid="uid://bus83smxdui76" path="res://House/house.tscn" id="6_5tjt4"]
-[ext_resource type="Script" path="res://control/housebutton/housebutton.gd" id="7_1g328"]
+[ext_resource type="Script" path="res://control/housebutton/house_button.gd" id="7_1g328"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vq0ci"]
 size = Vector3(17.0289, 1, 17.7095)
@@ -312,21 +312,24 @@ environment = SubResource("Environment_f0jdo")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="making stuff look nicer"]
 transform = Transform3D(1, 0, 0, 0, 0.931024, 0.364958, 0, -0.364958, 0.931024, 0, 30.9552, 33.4555)
 
-[node name="Houses" type="Node3D" parent="."]
+[node name="all_houses" type="Node3D" parent="."]
 unique_name_in_owner = true
 visible = false
 
-[node name="House" parent="Houses" instance=ExtResource("6_5tjt4")]
+[node name="House" parent="all_houses" instance=ExtResource("6_5tjt4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.0142, 1.10187, 28.9987)
 
-[node name="House2" parent="Houses" instance=ExtResource("6_5tjt4")]
+[node name="House2" parent="all_houses" instance=ExtResource("6_5tjt4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.4421, 1.10187, 28.9987)
 
-[node name="House3" parent="Houses" instance=ExtResource("6_5tjt4")]
+[node name="House3" parent="all_houses" instance=ExtResource("6_5tjt4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.4421, 1.10187, 37.0083)
 
-[node name="House4" parent="Houses" instance=ExtResource("6_5tjt4")]
+[node name="House4" parent="all_houses" instance=ExtResource("6_5tjt4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.9755, 1.10187, 37.0083)
+
+[node name="placed_houses" type="Node3D" parent="."]
+unique_name_in_owner = true
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
