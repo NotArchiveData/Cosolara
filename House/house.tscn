@@ -48,19 +48,15 @@ script = ExtResource("1_vm8fr")
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
 mesh = SubResource("ArrayMesh_wewau")
 
-[node name="Area3D" type="Area3D" parent="home"]
-collision_layer = 4
-collision_mask = 4
+[node name="Area3D2" type="Area3D" parent="home"]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
+collision_layer = 255
+collision_mask = 255
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="home/Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.45261, 0)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="home/Area3D2"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0.745261, 0)
 shape = SubResource("BoxShape3D_6y32n")
 
 [node name="mound" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.582048, 0)
 mesh = SubResource("CylinderMesh_msuf0")
-
-[connection signal="area_entered" from="home/Area3D" to="." method="_on_area_3d_area_entered"]
-[connection signal="input_event" from="home/Area3D" to="." method="_on_area_3d_input_event"]
-[connection signal="mouse_entered" from="home/Area3D" to="." method="mouse_entered"]
-[connection signal="mouse_exited" from="home/Area3D" to="." method="mouse_left"]

@@ -9,12 +9,12 @@ func model_green():
 	var houseNode = houses.get_children()
 	for i in houseNode:
 		var meshes = i.get_children()
-		
+
 		for j in meshes:
+
 			if j.get_name() in [ "home", "mound" ]:
 				j.set_surface_override_material(0, GREEN)
 				j.set_surface_override_material(1, GREEN)
-				
 			
 func model_red_NOTDONE():
 	var houseNode = houses.get_children()
@@ -34,6 +34,7 @@ func _on_pressed():
 			houses.show()
 			print("ur mom")
 			global.housebuttonpressed = 1
+			
 		
 		else:
 			model_red_NOTDONE()
