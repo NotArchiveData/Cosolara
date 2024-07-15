@@ -40,6 +40,8 @@ shadow_mesh = SubResource("ArrayMesh_42awb")
 size = Vector3(1, 0.67041, 8.28516)
 
 [node name="placed_road" type="StaticBody3D"]
+collision_layer = 8
+collision_mask = 0
 
 [node name="road" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.0220521, 0, -0.420711, 0, 0.250344, 0, 4.12037, 0, 0.00225164, 0, 0, 0)

@@ -59,10 +59,14 @@ skeleton = NodePath("")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="road/click"]
 shape = SubResource("BoxShape3D_pa2ti")
 
-[node name="Raycasts" type="Node3D" parent="."]
+[node name="Raycast" type="Node3D" parent="."]
 
-[node name="RoadRayCast" parent="Raycasts" instance=ExtResource("1_a5d4p")]
+[node name="RoadRayCast" parent="Raycast" instance=ExtResource("1_a5d4p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.212917, 3.30578)
+target_position = Vector3(2.08165e-12, -1, 2.08165e-12)
+
+[node name="RoadRayCast2" parent="Raycast" instance=ExtResource("1_a5d4p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.212917, -3.43612)
 target_position = Vector3(2.08165e-12, -1, 2.08165e-12)
 
 [connection signal="input_event" from="road/click" to="." method="_on_click_input_event"]

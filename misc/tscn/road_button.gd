@@ -1,6 +1,7 @@
 extends Button
 
 @onready var roads = %all_roads
+@onready var placed_roads = %placed_roads
 
 const GREEN = preload("res://House/green.tres")
 
@@ -35,10 +36,18 @@ func make_road_green():
 				j.set_surface_override_material(1, GREEN)
 
 func can_i_place_road():
-	for road in roads.get_children(): 
+	for road in roads.get_children():
 		for road_layers in road.get_children():
 			if road_layers.get_name() == "Raycast":
 				for raycast in road_layers.get_children():
 					if raycast.is_colliding():
-						road.hide()
+						road.show()
+						break
+
+					elif not raycast.is_colliding():
+						if placed_roads.get_child_count() == 0:
+							break
+						
+						else:
+							road.hide()
 
