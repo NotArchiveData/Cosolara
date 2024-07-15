@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://bus83smxdui76"]
+[gd_scene load_steps=7 format=3 uid="uid://bus83smxdui76"]
 
 [ext_resource type="Script" path="res://House/house_placer.gd" id="1_vm8fr"]
+[ext_resource type="PackedScene" uid="uid://rp0qj4unbat0" path="res://House/house_raycast.tscn" id="2_cpn24"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_wewau"]
 resource_name = "medieval_building_Cube_445"
@@ -60,5 +61,10 @@ shape = SubResource("BoxShape3D_6y32n")
 [node name="mound" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.582048, 0)
 mesh = SubResource("CylinderMesh_msuf0")
+
+[node name="Raycast" type="Node3D" parent="."]
+
+[node name="HouseRayCast" parent="Raycast" instance=ExtResource("2_cpn24")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.03807, 0)
 
 [connection signal="input_event" from="home/Area3D2" to="." method="_on_area_3d_input_event"]

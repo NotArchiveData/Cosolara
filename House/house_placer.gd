@@ -22,7 +22,3 @@ func build_my_house():
 	placed_houses.add_child(house_instantiated)
 			
 	
-
-
-func _on_area_3d_area_entered(area):
-	print("im touching someone!!!!!!!!")
