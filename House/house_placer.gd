@@ -15,7 +15,6 @@ func _on_area_3d_input_event(camera, event, position, normal, shape_idx):
 			houses.hide()
 			global.housebuttonpressed = 0
 			
-
 func build_my_house():
 	var house_instantiated = HOUSE.instantiate()
 	house_instantiated.global_transform = global_transform

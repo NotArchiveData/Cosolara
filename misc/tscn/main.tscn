@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://06s5ka43cdbc"]
+[gd_scene load_steps=18 format=3 uid="uid://06s5ka43cdbc"]
 
 [ext_resource type="Script" path="res://misc/gd/main.gd" id="1_oedg3"]
 [ext_resource type="PackedScene" uid="uid://ui6yxjaoto5r" path="res://DiceStuff/die.tscn" id="2_jmah0"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bus83smxdui76" path="res://House/house.tscn" id="6_j58a5"]
 [ext_resource type="Script" path="res://control/housebutton/house_button.gd" id="7_hklrv"]
 [ext_resource type="Script" path="res://misc/tscn/road_button.gd" id="8_nxaqc"]
+[ext_resource type="PackedScene" uid="uid://cdqjxkpsa0wrw" path="res://Roads/road.tscn" id="9_wtehx"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vq0ci"]
 size = Vector3(17.0289, 1, 17.7095)
@@ -351,13 +352,19 @@ visible = false
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.0142, 1.10187, 28.9987)
 
 [node name="House2" parent="all_houses" instance=ExtResource("6_j58a5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.4421, 1.10187, 28.9987)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.4421, 1.10187, 29.1913)
 
 [node name="House3" parent="all_houses" instance=ExtResource("6_j58a5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.4421, 1.10187, 37.0083)
 
 [node name="House4" parent="all_houses" instance=ExtResource("6_j58a5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.9755, 1.10187, 37.0083)
+
+[node name="House5" parent="all_houses" instance=ExtResource("6_j58a5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.1785, 1.10187, 39.9771)
+
+[node name="House6" parent="all_houses" instance=ExtResource("6_j58a5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.1785, 1.10187, 25.9458)
 
 [node name="placed_houses" type="Node3D" parent="."]
 unique_name_in_owner = true
@@ -402,6 +409,32 @@ focus_mode = 0
 text = "road"
 script = ExtResource("8_nxaqc")
 
+[node name="all_roads" type="Node3D" parent="."]
+unique_name_in_owner = true
+visible = false
+
+[node name="Road" parent="all_roads" instance=ExtResource("9_wtehx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.8259, 0.445748, 33.2071)
+
+[node name="Road2" parent="all_roads" instance=ExtResource("9_wtehx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.5724, 0.445748, 33.2071)
+
+[node name="Road3" parent="all_roads" instance=ExtResource("9_wtehx")]
+transform = Transform3D(0.5, 1.27665e-16, 0.866025, 3.48787e-16, 1, -3.48787e-16, -0.866025, 4.76452e-16, 0.5, 22.3303, 0.445748, 27.5982)
+
+[node name="Road4" parent="all_roads" instance=ExtResource("9_wtehx")]
+transform = Transform3D(0.5, 1.27665e-16, 0.866025, 3.48787e-16, 1, -3.48787e-16, -0.866025, 4.76452e-16, 0.5, 16.0187, 0.445748, 38.7175)
+
+[node name="Road5" parent="all_roads" instance=ExtResource("9_wtehx")]
+transform = Transform3D(0.5, -4.76452e-16, -0.866025, 3.48787e-16, 1, -3.48787e-16, 0.866025, -1.27665e-16, 0.5, 16.0187, 0.445748, 27.6598)
+
+[node name="Road6" parent="all_roads" instance=ExtResource("9_wtehx")]
+transform = Transform3D(0.5, -4.76452e-16, -0.866025, 3.48787e-16, 1, -3.48787e-16, 0.866025, -1.27665e-16, 0.5, 22.3426, 0.445748, 38.7298)
+
+[node name="placed_roads" type="Node3D" parent="."]
+unique_name_in_owner = true
+
 [connection signal="roll_finished" from="diestuff/Die" to="." method="_on_die_roll_finished"]
 [connection signal="roll_finished" from="diestuff/Die2" to="." method="_on_die_2_roll_finished"]
 [connection signal="pressed" from="Control/house" to="Control/house" method="_on_pressed"]
+[connection signal="pressed" from="Control/road" to="Control/road" method="_on_pressed"]

@@ -8,5 +8,4 @@ var ore = 30
 var coins = 100
 
 var housebuttonpressed = 0
-
-var house_collision = false
+var roadbuttonpressed = 0
