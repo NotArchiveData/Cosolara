@@ -6,11 +6,18 @@ extends Node3D
 const HOVER = preload("res://House/hover.tres")
 const HOUSE = preload("res://House/placed_house.tscn")
 
+func _ready():
+	pass
+	
+
 func _on_area_3d_input_event(camera, event, position, normal, shape_idx):
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed == true:
 			build_my_house()
 			queue_free()
+			
+			global.coins -= 20
+			global.resources()
 			
 			houses.hide()
 			global.housebuttonpressed = 0
@@ -20,4 +27,6 @@ func build_my_house():
 	house_instantiated.global_transform = global_transform
 	placed_houses.add_child(house_instantiated)
 			
+func update_resources():
+	pass
 	

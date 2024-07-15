@@ -9,3 +9,8 @@ var coins = 100
 
 var housebuttonpressed = 0
 var roadbuttonpressed = 0
+
+signal changed_resource
+
+func resources():
+	changed_resource.emit()

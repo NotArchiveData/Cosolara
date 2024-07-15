@@ -13,6 +13,7 @@ func _on_pressed():
 		
 		if global.water > 20 && global.coins > 10:
 			global.roadbuttonpressed = 1
+			
 			can_i_place_road()
 			are_all_children_hidden()
 			roads.show()

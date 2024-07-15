@@ -7,7 +7,9 @@ extends Control
 @onready var sheep_label = %sheep_label
 @onready var coin_label = %coin_label
 
-
-func _physics_process(delta):
+func _ready():
+	global.changed_resource.connect(_on_changed_resource)
+	
+func _on_changed_resource():
 	coin_label.text = str(global.coins)
 
