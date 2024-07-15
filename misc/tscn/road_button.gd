@@ -1,11 +1,15 @@
 extends Button
 
+@onready var houses = %all_houses
+
 @onready var roads = %all_roads
 @onready var placed_roads = %placed_roads
 
 const GREEN = preload("res://House/green.tres")
 
 func _on_pressed():
+	houses.hide()
+	global.housebuttonpressed = 0
 	
 	if global.roadbuttonpressed == 0:
 		

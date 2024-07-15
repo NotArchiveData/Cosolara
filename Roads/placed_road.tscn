@@ -37,7 +37,7 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_42awb")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qa2l1"]
-size = Vector3(1, 0.67041, 8.28516)
+size = Vector3(1, 0.67041, 10.0236)
 
 [node name="placed_road" type="StaticBody3D"]
 collision_layer = 8
@@ -49,5 +49,5 @@ mesh = SubResource("ArrayMesh_40apx")
 skeleton = NodePath("")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0123053, -0.999383, 0.0106969)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0123053, -0.999383, 0.0122232)
 shape = SubResource("BoxShape3D_qa2l1")

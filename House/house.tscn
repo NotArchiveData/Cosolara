@@ -64,7 +64,12 @@ mesh = SubResource("CylinderMesh_msuf0")
 
 [node name="Raycast" type="Node3D" parent="."]
 
-[node name="HouseRayCast" parent="Raycast" instance=ExtResource("2_cpn24")]
+[node name="house" parent="Raycast" instance=ExtResource("2_cpn24")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.03807, 0)
+
+[node name="road" parent="Raycast" instance=ExtResource("2_cpn24")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.03807, 0)
+target_position = Vector3(2.08165e-12, -5, 2.08165e-12)
+collision_mask = 8
 
 [connection signal="input_event" from="home/Area3D2" to="." method="_on_area_3d_input_event"]
