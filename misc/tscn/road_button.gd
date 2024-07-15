@@ -14,33 +14,18 @@ func _on_pressed():
 	if global.roadbuttonpressed == 0:
 		
 		if global.water > 20 && global.coins > 10:
-			
-			make_road_green()
+			global.roadbuttonpressed = 1
 			can_i_place_road()
+			are_all_children_hidden()
 			roads.show()
 
-			print("ur mom")
-			global.roadbuttonpressed = 1
-
-	
 	elif global.roadbuttonpressed == 1:
 		roads.hide()
-		print("ur dad")
 		global.roadbuttonpressed = 0
-
-func make_road_green():
-	var roadNode = roads.get_children()
-	for i in roadNode:
-		var meshes = i.get_children()
-
-		for j in meshes:
-
-			if j.get_name() == "road":
-				j.set_surface_override_material(0, GREEN)
-				j.set_surface_override_material(1, GREEN)
 
 func can_i_place_road():
 	for road in roads.get_children():
+		road.hide()
 		for road_layers in road.get_children():
 			if road_layers.get_name() == "Raycast":
 				for raycast in road_layers.get_children():
@@ -48,10 +33,15 @@ func can_i_place_road():
 						road.show()
 						break
 
-					elif not raycast.is_colliding():
-						if placed_roads.get_child_count() == 0:
-							break
-						
-						else:
-							road.hide()
+func are_all_children_hidden():
+	var visibility = 0
+	
+	for road in roads.get_children():
+		if not road.is_visible():
+			visibility += 1
+	
+	if visibility == roads.get_child_count():
+		print("Can't place more roads, please build houses")
+		roads.hide()
+		global.roadbuttonpressed = 0
 
