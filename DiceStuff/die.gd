@@ -1,6 +1,7 @@
 extends RigidBody3D
 
 @onready var raycasts = $Raycasts.get_children()
+@onready var roll_die_button = %roll_die_button
 
 var start_pos
 var roll_strength = 30
@@ -10,6 +11,10 @@ signal roll_finished(value)
 
 func _ready():
 	start_pos = global_position
+	roll_die_button.pressed.connect(
+		func(): 
+			_roll()
+	)
 
 func _input(event):
 	if event.is_action_pressed("ui_accept") && !is_rolling:

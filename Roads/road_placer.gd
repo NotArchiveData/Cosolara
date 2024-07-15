@@ -13,6 +13,7 @@ func _on_click_input_event(camera, event, position, normal, shape_idx):
 			queue_free()
 			
 			roads.hide()
+			global.coins -= 10
 			global.roadbuttonpressed = 0
 
 func build_my_road():

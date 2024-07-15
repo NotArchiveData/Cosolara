@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://06s5ka43cdbc"]
+[gd_scene load_steps=35 format=3 uid="uid://06s5ka43cdbc"]
 
 [ext_resource type="Script" path="res://misc/gd/main.gd" id="1_oedg3"]
 [ext_resource type="PackedScene" uid="uid://ui6yxjaoto5r" path="res://DiceStuff/die.tscn" id="2_jmah0"]
@@ -6,9 +6,16 @@
 [ext_resource type="PackedScene" uid="uid://deohpkwi5s7uf" path="res://Tiles/default_tile.tscn" id="4_jtt6g"]
 [ext_resource type="Script" path="res://misc/gd/cam.gd" id="5_a885l"]
 [ext_resource type="PackedScene" uid="uid://bus83smxdui76" path="res://House/house.tscn" id="6_j58a5"]
-[ext_resource type="Script" path="res://control/housebutton/house_button.gd" id="7_hklrv"]
-[ext_resource type="Script" path="res://misc/tscn/road_button.gd" id="8_nxaqc"]
+[ext_resource type="Texture2D" uid="uid://6po1pv23ri4d" path="res://images/3275748.png" id="8_5ucd0"]
+[ext_resource type="Script" path="res://misc/tscn/ui.gd" id="8_n8lb0"]
+[ext_resource type="Texture2D" uid="uid://ctdrbe65da6ty" path="res://images/6517575.png" id="9_8mmc4"]
 [ext_resource type="PackedScene" uid="uid://cdqjxkpsa0wrw" path="res://Roads/road.tscn" id="9_wtehx"]
+[ext_resource type="Texture2D" uid="uid://stl8ywlbvtjm" path="res://images/9410659.png" id="10_q1sci"]
+[ext_resource type="Texture2D" uid="uid://dj46rllr15do8" path="res://images/3662282.png" id="11_snv1k"]
+[ext_resource type="Texture2D" uid="uid://de5krmflub4d5" path="res://images/8043428.png" id="12_4tx01"]
+[ext_resource type="Texture2D" uid="uid://dqwswnplu0x52" path="res://images/1027961.png" id="13_rsdm6"]
+[ext_resource type="Script" path="res://UI/house_button.gd" id="14_t8qbu"]
+[ext_resource type="Script" path="res://UI/road_button.gd" id="15_s2p7d"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vq0ci"]
 size = Vector3(17.0289, 1, 17.7095)
@@ -32,6 +39,68 @@ sky_material = SubResource("ProceduralSkyMaterial_lj33s")
 [sub_resource type="Environment" id="Environment_f0jdo"]
 background_mode = 2
 sky = SubResource("Sky_6hix6")
+
+[sub_resource type="Gradient" id="Gradient_bqj31"]
+colors = PackedColorArray(1, 1, 1, 0, 0.168627, 0.168627, 0.168627, 0.396078)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ns6x0"]
+gradient = SubResource("Gradient_bqj31")
+fill = 1
+fill_from = Vector2(0.510684, 0.523504)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e31d6"]
+bg_color = Color(0.168627, 0.168627, 0.168627, 1)
+corner_radius_top_left = 100
+corner_radius_top_right = 100
+corner_radius_bottom_right = 100
+corner_radius_bottom_left = 100
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n2gi1"]
+bg_color = Color(0.168627, 0.168627, 0.168627, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ff1bk"]
+bg_color = Color(0.169, 0.169, 0.169, 0.5)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rf3yf"]
+bg_color = Color(0.917647, 0.917647, 0.917647, 1)
+corner_radius_top_left = 100
+corner_radius_top_right = 100
+corner_radius_bottom_right = 100
+corner_radius_bottom_left = 100
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jgtgc"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 100
+corner_radius_top_right = 100
+corner_radius_bottom_right = 100
+corner_radius_bottom_left = 100
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fim2l"]
+bg_color = Color(0.917647, 0.917647, 0.917647, 1)
+corner_radius_top_left = 100
+corner_radius_top_right = 100
+corner_radius_bottom_right = 100
+corner_radius_bottom_left = 100
+
+[sub_resource type="Theme" id="Theme_7tqr6"]
+Button/styles/hover = SubResource("StyleBoxFlat_rf3yf")
+Button/styles/normal = SubResource("StyleBoxFlat_jgtgc")
+Button/styles/pressed = SubResource("StyleBoxFlat_fim2l")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1fkop"]
+bg_color = Color(0.840752, 0.368124, 0.222699, 1)
+corner_radius_top_left = 100
+corner_radius_top_right = 100
+corner_radius_bottom_right = 100
+corner_radius_bottom_left = 100
 
 [node name="Game" type="Node"]
 script = ExtResource("1_oedg3")
@@ -327,7 +396,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44.667, 0, 99.5314)
 [node name="making stuff look nicer" type="Node" parent="."]
 
 [node name="Camera3D" type="Camera3D" parent="making stuff look nicer"]
-transform = Transform3D(1, 0, 0, 0, 0.927151, 0.374688, 0, -0.374688, 0.927151, 18.5144, 7.21154, 47.1061)
+transform = Transform3D(1, -5.72983e-16, 2.67186e-16, 2.67186e-16, 0.766044, 0.642788, -5.72983e-16, -0.642788, 0.766044, 15, 15, 50)
 fov = 58.633
 script = ExtResource("5_a885l")
 
@@ -369,46 +438,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.1785, 1.10187, 25.9458)
 [node name="placed_houses" type="Node3D" parent="."]
 unique_name_in_owner = true
 
-[node name="Control" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-
-[node name="house" type="Button" parent="Control"]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -314.0
-offset_top = -174.0
-grow_horizontal = 0
-grow_vertical = 0
-focus_mode = 0
-text = "house"
-script = ExtResource("7_hklrv")
-
-[node name="road" type="Button" parent="Control"]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -685.0
-offset_top = -174.0
-offset_right = -371.0
-grow_horizontal = 0
-grow_vertical = 0
-focus_mode = 0
-text = "road"
-script = ExtResource("8_nxaqc")
-
 [node name="all_roads" type="Node3D" parent="."]
 unique_name_in_owner = true
 visible = false
@@ -449,7 +478,1019 @@ transform = Transform3D(0.5, -4.76452e-16, -0.866025, 3.48787e-16, 1, -3.48787e-
 [node name="placed_roads" type="Node3D" parent="."]
 unique_name_in_owner = true
 
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("8_n8lb0")
+
+[node name="bg gradient" type="TextureRect" parent="UI"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 0.000244141
+offset_right = 0.000244141
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_ns6x0")
+
+[node name="Avatar" type="Panel" parent="UI"]
+layout_mode = 1
+offset_left = 49.0
+offset_top = 49.0
+offset_right = 119.0
+offset_bottom = 119.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_e31d6")
+
+[node name="Resources" type="Panel" parent="UI"]
+layout_mode = 1
+offset_left = 135.0
+offset_top = 49.0
+offset_right = 618.0
+offset_bottom = 119.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_n2gi1")
+
+[node name="wood" type="TextureRect" parent="UI/Resources"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -133.5
+offset_top = -28.0
+offset_right = -98.5
+offset_bottom = 7.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_5ucd0")
+expand_mode = 1
+
+[node name="wood_label" type="Label" parent="UI/Resources/wood"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -47.0
+offset_top = -14.5
+offset_right = 13.0
+offset_bottom = 40.5
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 0
+text = "30"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="brick" type="TextureRect" parent="UI/Resources"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -57.5
+offset_top = -28.0
+offset_right = -22.5
+offset_bottom = 7.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("9_8mmc4")
+expand_mode = 1
+
+[node name="brick_label" type="Label" parent="UI/Resources/brick"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -47.0
+offset_top = -14.5
+offset_right = 13.0
+offset_bottom = 40.5
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 0
+text = "30"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="ore" type="TextureRect" parent="UI/Resources"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 22.5
+offset_top = -27.0
+offset_right = 52.5
+offset_bottom = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("10_q1sci")
+expand_mode = 1
+
+[node name="ore_label" type="Label" parent="UI/Resources/ore"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -44.0
+offset_top = -13.0
+offset_right = 16.0
+offset_bottom = 42.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 0
+text = "30"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="wheat" type="TextureRect" parent="UI/Resources"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 96.5
+offset_top = -27.0
+offset_right = 131.5
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("11_snv1k")
+expand_mode = 1
+
+[node name="wheat_label" type="Label" parent="UI/Resources/wheat"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -48.0
+offset_top = -15.5
+offset_right = 12.0
+offset_bottom = 39.5
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 0
+text = "30"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="wool" type="TextureRect" parent="UI/Resources"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 175.5
+offset_top = -26.0
+offset_right = 205.5
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("12_4tx01")
+expand_mode = 1
+
+[node name="sheep_label" type="Label" parent="UI/Resources/wool"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -44.0
+offset_top = -14.0
+offset_right = 16.0
+offset_bottom = 41.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 0
+text = "30"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="coins" type="TextureRect" parent="UI/Resources"]
+layout_mode = 0
+offset_left = 33.0
+offset_top = 11.0
+offset_right = 61.0
+offset_bottom = 39.0
+texture = ExtResource("13_rsdm6")
+expand_mode = 1
+
+[node name="coin_label" type="Label" parent="UI/Resources/coins"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -45.0
+offset_top = -15.0
+offset_right = 15.0
+offset_bottom = 40.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 0
+text = "30"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="desc" type="Panel" parent="UI"]
+visible = false
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -517.0
+offset_top = -492.0
+offset_right = -50.0
+offset_bottom = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_ff1bk")
+
+[node name="roll_die_button" type="Button" parent="UI"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -25.0
+offset_top = -90.0
+offset_right = 25.0
+offset_bottom = -40.0
+grow_horizontal = 2
+grow_vertical = 0
+focus_mode = 0
+theme = SubResource("Theme_7tqr6")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+
+[node name="Button7" type="Button" parent="UI"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 127.0
+offset_top = -90.0
+offset_right = 177.0
+offset_bottom = -40.0
+grow_horizontal = 2
+grow_vertical = 0
+focus_mode = 0
+
+[node name="house" type="Button" parent="UI"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -113.0
+offset_top = -90.0
+offset_right = -63.0
+offset_bottom = -40.0
+grow_horizontal = 2
+grow_vertical = 0
+focus_mode = 0
+text = "Hou"
+script = ExtResource("14_t8qbu")
+
+[node name="house_panel" type="Panel" parent="UI/house"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 13.5
+offset_top = -58.0
+offset_right = 34.5
+offset_bottom = -37.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_1fkop")
+
+[node name="hmcyp_house" type="Label" parent="UI/house/house_panel"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -19.5
+offset_top = -11.5
+offset_right = 20.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "10"
+horizontal_alignment = 1
+
+[node name="road" type="Button" parent="UI"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -177.0
+offset_top = -90.0
+offset_right = -127.0
+offset_bottom = -40.0
+grow_horizontal = 2
+grow_vertical = 0
+focus_mode = 0
+text = "R Lef"
+script = ExtResource("15_s2p7d")
+
+[node name="road_r_panel" type="Panel" parent="UI/road"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 13.5
+offset_top = -58.0
+offset_right = 34.5
+offset_bottom = -37.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_1fkop")
+
+[node name="hmcyp_road_r" type="Label" parent="UI/road/road_r_panel"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -19.5
+offset_top = -11.5
+offset_right = 20.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "10"
+horizontal_alignment = 1
+
+[node name="bank" type="Node" parent="UI"]
+
+[node name="bank" type="Button" parent="UI/bank"]
+unique_name_in_owner = true
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 63.0
+offset_top = -90.0
+offset_right = 113.0
+offset_bottom = -40.0
+grow_horizontal = 2
+grow_vertical = 0
+focus_mode = 0
+text = "Bank"
+
+[node name="sell" type="Button" parent="UI/bank"]
+visible = false
+offset_left = 1311.0
+offset_top = 764.0
+offset_right = 1381.0
+offset_bottom = 834.0
+focus_mode = 0
+text = "Sell"
+
+[node name="buy" type="Button" parent="UI/bank"]
+visible = false
+offset_left = 1311.0
+offset_top = 676.0
+offset_right = 1381.0
+offset_bottom = 746.0
+focus_mode = 0
+text = "Buy"
+
+[node name="bank_panel_sell" type="Panel" parent="UI/bank"]
+visible = false
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -517.0
+offset_top = -492.0
+offset_right = -50.0
+offset_bottom = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_ff1bk")
+
+[node name="Panel" type="Panel" parent="UI/bank/bank_panel_sell"]
+layout_mode = 0
+offset_left = -41.0
+offset_top = -41.0
+offset_right = 58.0
+offset_bottom = 58.0
+
+[node name="confirm" type="Button" parent="UI/bank/bank_panel_sell"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -205.5
+offset_top = -66.0
+offset_right = 206.5
+offset_bottom = -24.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Sell"
+
+[node name="wood" type="TextureRect" parent="UI/bank/bank_panel_sell"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -172.5
+offset_top = -65.0
+offset_right = -137.5
+offset_bottom = -30.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_5ucd0")
+expand_mode = 1
+
+[node name="wood" type="Label" parent="UI/bank/bank_panel_sell/wood"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -47.0
+offset_top = -14.5
+offset_right = 13.0
+offset_bottom = 40.5
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 0
+text = "0
+"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="wood+" type="Button" parent="UI/bank/bank_panel_sell/wood"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 9.0
+offset_top = 1.0
+offset_right = 41.0
+offset_bottom = 33.0
+grow_horizontal = 0
+grow_vertical = 0
+focus_mode = 0
+text = "+"
+
+[node name="wood-" type="Button" parent="UI/bank/bank_panel_sell/wood"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -70.0
+offset_top = -1.0
+offset_right = -38.0
+offset_bottom = 31.0
+grow_horizontal = 0
+grow_vertical = 0
+focus_mode = 0
+text = "-"
+
+[node name="brick" type="TextureRect" parent="UI/bank/bank_panel_sell"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -30.5
+offset_top = -5.0
+offset_right = 4.5
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("9_8mmc4")
+expand_mode = 1
+
+[node name="brick_label" type="Label" parent="UI/bank/bank_panel_sell/brick"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -47.0
+offset_top = -14.5
+offset_right = 13.0
+offset_bottom = 40.5
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 0
+text = "0
+"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="ore" type="TextureRect" parent="UI/bank/bank_panel_sell"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 139.5
+offset_top = 56.0
+offset_right = 169.5
+offset_bottom = 86.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("10_q1sci")
+expand_mode = 1
+
+[node name="ore_label" type="Label" parent="UI/bank/bank_panel_sell/ore"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -44.0
+offset_top = -13.0
+offset_right = 16.0
+offset_bottom = 42.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 0
+text = "0
+"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="wheat" type="TextureRect" parent="UI/bank/bank_panel_sell"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 139.5
+offset_top = -157.0
+offset_right = 174.5
+offset_bottom = -122.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("11_snv1k")
+expand_mode = 1
+
+[node name="wheat_label" type="Label" parent="UI/bank/bank_panel_sell/wheat"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -48.0
+offset_top = -15.5
+offset_right = 12.0
+offset_bottom = 39.5
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 0
+text = "0
+"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="wool" type="TextureRect" parent="UI/bank/bank_panel_sell"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 58.5
+offset_top = -42.0
+offset_right = 88.5
+offset_bottom = -12.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("12_4tx01")
+expand_mode = 1
+
+[node name="sheep_label" type="Label" parent="UI/bank/bank_panel_sell/wool"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -44.0
+offset_top = -14.0
+offset_right = 16.0
+offset_bottom = 41.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 0
+text = "0
+"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="amount1" type="Button" parent="UI/bank/bank_panel_sell"]
+layout_mode = 0
+offset_left = 143.0
+offset_top = 95.0
+offset_right = 186.0
+offset_bottom = 138.0
+focus_mode = 0
+text = "1"
+
+[node name="amount10" type="Button" parent="UI/bank/bank_panel_sell"]
+layout_mode = 0
+offset_left = 217.0
+offset_top = 93.0
+offset_right = 260.0
+offset_bottom = 136.0
+focus_mode = 0
+text = "10"
+
+[node name="amount100" type="Button" parent="UI/bank/bank_panel_sell"]
+layout_mode = 0
+offset_left = 283.0
+offset_top = 78.0
+offset_right = 326.0
+offset_bottom = 121.0
+focus_mode = 0
+text = "100"
+
+[node name="coins" type="Label" parent="UI/bank/bank_panel_sell"]
+layout_mode = 0
+offset_left = 148.0
+offset_top = 339.0
+offset_right = 195.0
+offset_bottom = 362.0
+text = "Coins:"
+
+[node name="cost_number" type="Label" parent="UI/bank/bank_panel_sell"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -265.0
+offset_top = -111.0
+offset_right = -225.0
+offset_bottom = -88.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "0"
+
+[node name="bank_panel_buy" type="Panel" parent="UI/bank"]
+visible = false
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -517.0
+offset_top = -492.0
+offset_right = -50.0
+offset_bottom = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_ff1bk")
+
+[node name="Panel" type="Panel" parent="UI/bank/bank_panel_buy"]
+layout_mode = 0
+offset_left = -41.0
+offset_top = -41.0
+offset_right = 58.0
+offset_bottom = 58.0
+
+[node name="confirm" type="Button" parent="UI/bank/bank_panel_buy"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -205.5
+offset_top = -66.0
+offset_right = 206.5
+offset_bottom = -24.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Buy"
+
+[node name="wood" type="TextureRect" parent="UI/bank/bank_panel_buy"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -172.5
+offset_top = -65.0
+offset_right = -137.5
+offset_bottom = -30.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_5ucd0")
+expand_mode = 1
+
+[node name="wood" type="Label" parent="UI/bank/bank_panel_buy/wood"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -47.0
+offset_top = -14.5
+offset_right = 13.0
+offset_bottom = 40.5
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 0
+text = "0
+"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="wood+" type="Button" parent="UI/bank/bank_panel_buy/wood"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 9.0
+offset_top = 1.0
+offset_right = 41.0
+offset_bottom = 33.0
+grow_horizontal = 0
+grow_vertical = 0
+focus_mode = 0
+text = "+"
+
+[node name="wood-" type="Button" parent="UI/bank/bank_panel_buy/wood"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -70.0
+offset_top = -1.0
+offset_right = -38.0
+offset_bottom = 31.0
+grow_horizontal = 0
+grow_vertical = 0
+focus_mode = 0
+text = "-"
+
+[node name="brick" type="TextureRect" parent="UI/bank/bank_panel_buy"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -30.5
+offset_top = -5.0
+offset_right = 4.5
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("9_8mmc4")
+expand_mode = 1
+
+[node name="brick_label" type="Label" parent="UI/bank/bank_panel_buy/brick"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -47.0
+offset_top = -14.5
+offset_right = 13.0
+offset_bottom = 40.5
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 0
+text = "0
+"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="ore" type="TextureRect" parent="UI/bank/bank_panel_buy"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -159.5
+offset_top = 56.0
+offset_right = -129.5
+offset_bottom = 86.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("10_q1sci")
+expand_mode = 1
+
+[node name="ore_label" type="Label" parent="UI/bank/bank_panel_buy/ore"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -44.0
+offset_top = -13.0
+offset_right = 16.0
+offset_bottom = 42.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 0
+text = "0
+"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="wheat" type="TextureRect" parent="UI/bank/bank_panel_buy"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 129.5
+offset_top = 41.0
+offset_right = 164.5
+offset_bottom = 76.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("11_snv1k")
+expand_mode = 1
+
+[node name="wheat_label" type="Label" parent="UI/bank/bank_panel_buy/wheat"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -48.0
+offset_top = -15.5
+offset_right = 12.0
+offset_bottom = 39.5
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 0
+text = "0
+"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="wool" type="TextureRect" parent="UI/bank/bank_panel_buy"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 124.5
+offset_top = -139.0
+offset_right = 154.5
+offset_bottom = -109.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("12_4tx01")
+expand_mode = 1
+
+[node name="sheep_label" type="Label" parent="UI/bank/bank_panel_buy/wool"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -44.0
+offset_top = -14.0
+offset_right = 16.0
+offset_bottom = 41.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 0
+text = "0
+"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="amount1" type="Button" parent="UI/bank/bank_panel_buy"]
+layout_mode = 0
+offset_left = 92.0
+offset_top = 33.0
+offset_right = 135.0
+offset_bottom = 76.0
+focus_mode = 0
+text = "1"
+
+[node name="amount10" type="Button" parent="UI/bank/bank_panel_buy"]
+layout_mode = 0
+offset_left = 167.0
+offset_top = 44.0
+offset_right = 210.0
+offset_bottom = 87.0
+focus_mode = 0
+text = "10"
+
+[node name="amount100" type="Button" parent="UI/bank/bank_panel_buy"]
+layout_mode = 0
+offset_left = 237.0
+offset_top = 37.0
+offset_right = 280.0
+offset_bottom = 80.0
+focus_mode = 0
+text = "100"
+
+[node name="cost" type="Label" parent="UI/bank/bank_panel_buy"]
+layout_mode = 0
+offset_left = 157.0
+offset_top = 340.0
+offset_right = 197.0
+offset_bottom = 363.0
+text = "Cost:"
+
+[node name="cost_number" type="Label" parent="UI/bank/bank_panel_buy"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -265.0
+offset_top = -111.0
+offset_right = -225.0
+offset_bottom = -88.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "0"
+
 [connection signal="roll_finished" from="diestuff/Die" to="." method="_on_die_roll_finished"]
 [connection signal="roll_finished" from="diestuff/Die2" to="." method="_on_die_2_roll_finished"]
-[connection signal="pressed" from="Control/house" to="Control/house" method="_on_pressed"]
-[connection signal="pressed" from="Control/road" to="Control/road" method="_on_pressed"]
+[connection signal="pressed" from="UI/house" to="UI/house" method="_on_pressed"]
+[connection signal="pressed" from="UI/road" to="UI/road" method="_on_pressed"]
