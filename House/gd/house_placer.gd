@@ -12,7 +12,7 @@ func _on_area_3d_input_event(_camera, event, _position, _normal, _shape_idx):
 			queue_free()
 			
 			global.res["coins"] -= 20
-			global.resources()
+			global_signal.resources()
 			
 			houses.hide()
 			global.housebuttonpressed = 0

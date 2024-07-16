@@ -1623,7 +1623,7 @@ grow_vertical = 2
 texture = ExtResource("12_4tx01")
 expand_mode = 1
 
-[node name="sheep_label" type="Label" parent="UI/Resources/wool"]
+[node name="wool_label" type="Label" parent="UI/Resources/wool"]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 6

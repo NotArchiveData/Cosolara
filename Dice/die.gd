@@ -12,13 +12,14 @@ signal roll_finished(value)
 func _ready():
 	start_pos = global_position
 	roll_die_button.pressed.connect(
-		func(): 
-			_roll()
-	)
+		func is_it_rolling():
+			if !is_rolling:
+				_roll()
+			)
 
-func _input(event):
-	if event.is_action_pressed("ui_accept") && !is_rolling:
-		_roll()
+#func _input(event):
+	#if event.is_action_pressed("ui_accept") && !is_rolling:
+		#_roll()
 
 func _roll():
 	#Reset state
@@ -70,7 +71,7 @@ func is_diefinished():
 		var die_value = die1 + die2
 		global.die_sum = die_value
 		global_signal.roll_sum()
-		print("die output: ", die_value)
 		
+		print("die output: ", die_value)
 		die1 = 0
 		die2 = 0

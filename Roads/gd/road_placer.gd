@@ -13,7 +13,7 @@ func _on_click_input_event(_camera, event, _position, _normal, _shape_idx):
 			
 			roads.hide()
 			global.res["coins"] -= 10
-			global.resources()
+			global_signal.resources()
 			global.roadbuttonpressed = 0
 
 func build_my_road():

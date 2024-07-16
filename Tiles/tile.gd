@@ -12,7 +12,6 @@ var resource_list = [ brick, ore, wheat, wood, wool ]
 
 func _ready():
 	global_signal.roll.connect(get_collisions)
-	#global_signal.roll.connect(get_tile_numbers)
 	
 	for tile in get_children():
 		var location = tile.global_transform
@@ -36,19 +35,15 @@ func randomize_tile_numbers():
 			for layer in tile.get_children():
 				if layer.get_name() == "number" && layer is Label3D:
 					var rng = randi_range(2, 12)
-					
-					#layer.set_name(str(rng))
 					layer.text = str(rng)
 
 func get_collisions():
-	print(global.res)
 	for category in shuffled_tiles.get_children():
 		for tile in category.get_children():
 			for layer in tile.get_children():
 				if layer.get_name() == "Raycast":
 					for raycast in layer.get_children():
 						if raycast.is_colliding():
-
 							var layer_ = raycast.get_parent()
 							var category_ = layer_.get_parent()
 							for name_ in category_.get_children():
@@ -56,7 +51,7 @@ func get_collisions():
 									if str(global.die_sum) == name_.text:
 										var um = str(category.name)
 										global.res[um] += 10
-	print(global.res)
+										global_signal.resources()
 
 
 
