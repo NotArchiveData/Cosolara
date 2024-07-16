@@ -1,7 +1,7 @@
 [gd_scene load_steps=34 format=3 uid="uid://06s5ka43cdbc"]
 
 [ext_resource type="PackedScene" uid="uid://ui6yxjaoto5r" path="res://Dice/die.tscn" id="2_jmah0"]
-[ext_resource type="Script" path="res://misc/gd/placeholder_tiles.gd" id="3_3pdl5"]
+[ext_resource type="Script" path="res://Tiles/tiles.gd" id="3_3pdl5"]
 [ext_resource type="PackedScene" uid="uid://deohpkwi5s7uf" path="res://Tiles/default_tile.tscn" id="4_jtt6g"]
 [ext_resource type="Script" path="res://misc/gd/cam.gd" id="5_a885l"]
 [ext_resource type="PackedScene" uid="uid://bus83smxdui76" path="res://House/tscn/house.tscn" id="6_j58a5"]

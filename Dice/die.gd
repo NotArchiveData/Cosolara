@@ -61,7 +61,6 @@ func _on_roll_finished(value):
 	die1 = value
 	is_diefinished()
 
-
 func _on_die_2_roll_finished(value):
 	die2 = value
 	is_diefinished()
