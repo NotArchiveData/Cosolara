@@ -20,7 +20,6 @@ func _ready():
 	list_append(5, tile5_rng)
 	
 	distributed_tile_list.shuffle()
-	print(distributed_tile_list)
 
 func list_append(tile_type, rng):
 	for i in range(rng):

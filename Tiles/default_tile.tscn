@@ -1,4 +1,23 @@
-[gd_scene load_steps=10 format=3 uid="uid://deohpkwi5s7uf"]
+[gd_scene load_steps=11 format=3 uid="uid://deohpkwi5s7uf"]
+
+[sub_resource type="GDScript" id="GDScript_u8jep"]
+script/source = "extends Node3D
+
+@onready var tiles = %Tiles
+@onready var tile = $\".\"
+
+func _ready():
+	global.changed_resource.connect(check_collision)
+	
+func check_collision():
+	for layers in tile.get_children():
+		if layers.get_name() == \"Raycast\":
+			for raycasts in layers.get_children():
+				if raycasts.is_colliding():
+					print(\"im colliding\")
+
+
+"
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mvgnl"]
 
@@ -111,8 +130,9 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_mnu5v")
 
-[node name="Tile1" type="Node3D"]
+[node name="Tile" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.047533, 0, 0)
+script = SubResource("GDScript_u8jep")
 
 [node name="Cylinder" type="MeshInstance3D" parent="."]
 transform = Transform3D(-7.37819, 0, 0, 0, -1.00972, 0, 0, 0, -7.37819, 0, -0.862459, 0)
