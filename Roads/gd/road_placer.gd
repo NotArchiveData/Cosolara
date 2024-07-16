@@ -5,7 +5,7 @@ extends Node3D
 
 const ROAD = preload("res://Roads/tscn/placed_road.tscn")
 
-func _on_click_input_event(camera, event, position, normal, shape_idx):
+func _on_click_input_event(_camera, event, _position, _normal, _shape_idx):
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed == true:
 			build_my_road()

@@ -111,10 +111,10 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_mnu5v")
 
-[node name="Tile" type="Node3D"]
+[node name="wheat" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.047533, 0, 0)
 
-[node name="Cylinder" type="MeshInstance3D" parent="."]
+[node name="wheat" type="MeshInstance3D" parent="."]
 transform = Transform3D(-7.37819, 0, 0, 0, -1.00972, 0, 0, 0, -7.37819, 0, -0.862459, 0)
 mesh = SubResource("ArrayMesh_yamlo")
 skeleton = NodePath("")
