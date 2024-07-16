@@ -15,7 +15,7 @@ func _process(delta):
 		direction -= transform.basis.x.normalized()
 	if Input.is_action_pressed("right"):
 		direction += transform.basis.x.normalized()
-
+	
 	new_position = global_transform.origin + direction * move_speed * delta
 	global_transform.origin.x = new_position.x
 	global_transform.origin.z = new_position.z

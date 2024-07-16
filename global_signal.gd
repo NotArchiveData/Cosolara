@@ -1,3 +1,7 @@
 extends Node
 
-signal roll_sum(value)
+signal roll
+
+func roll_sum():
+	roll.emit()
+

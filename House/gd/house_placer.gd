@@ -11,7 +11,7 @@ func _on_area_3d_input_event(_camera, event, _position, _normal, _shape_idx):
 			build_my_house()
 			queue_free()
 			
-			global.coins -= 20
+			global.res["coins"] -= 20
 			global.resources()
 			
 			houses.hide()

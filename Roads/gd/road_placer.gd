@@ -12,7 +12,7 @@ func _on_click_input_event(_camera, event, _position, _normal, _shape_idx):
 			queue_free()
 			
 			roads.hide()
-			global.coins -= 10
+			global.res["coins"] -= 10
 			global.resources()
 			global.roadbuttonpressed = 0
 

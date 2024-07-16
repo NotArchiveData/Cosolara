@@ -68,6 +68,8 @@ func _on_die_2_roll_finished(value):
 func is_diefinished():
 	if die1 && die2:
 		var die_value = die1 + die2
+		global.die_sum = die_value
+		global_signal.roll_sum()
 		print("die output: ", die_value)
 		
 		die1 = 0

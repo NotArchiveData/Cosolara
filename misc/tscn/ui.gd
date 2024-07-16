@@ -11,5 +11,5 @@ func _ready():
 	global.changed_resource.connect(_on_changed_resource)
 	
 func _on_changed_resource():
-	coin_label.text = str(global.coins)
+	coin_label.text = str(global.res["coins"])
 

@@ -11,7 +11,7 @@ func _on_pressed():
 	
 	if global.roadbuttonpressed == 0:
 		
-		if global.water > 20 && global.coins > 10:
+		if global.res["brick"] > 20 && global.res["wood"] > 20:
 			global.roadbuttonpressed = 1
 			
 			can_i_place_road()
