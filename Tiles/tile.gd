@@ -15,16 +15,16 @@ func _ready():
 		var location = tile.global_transform
 		resource_list.shuffle()
 		var random_resource = resource_list[0]
-		var resource_name = random_resource.instantiate()
-		replace_tile(random_resource, resource_name.name, location)
+		replace_tile(random_resource, location)
 		
 		tile.queue_free()
+	get_number()
 
-func replace_tile(resource, resource_name, location):
+func replace_tile(resource, location):
 	var resource_tile = resource.instantiate()
 	resource_tile.global_transform = location
 	for category in shuffled_tiles.get_children():
-		if category.get_name() == resource_name:
+		if category.get_name() == resource_tile.name:
 			category.add_child(resource_tile)
 
 func get_collisions():
@@ -34,6 +34,13 @@ func get_collisions():
 				for raycast in layers.get_children():
 					if raycast.is_colliding():
 						print(tile)
-		
+
+func get_number():
+	for category in shuffled_tiles.get_children():
+		for tile in category.get_children():
+			for layer in tile.get_children():
+				if layer.get_name() == "number" && layer is Label3D:
+					var rng = randi_range(2, 12)
+					layer.text = str(rng)
 
 	
