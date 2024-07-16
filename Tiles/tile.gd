@@ -2,31 +2,30 @@ extends Node3D
 
 @onready var shuffled_tiles = %shuffled_tiles
 
-var brick = preload("res://Tiles/Elements/brick.tscn").instantiate()
-var ore = preload("res://Tiles/Elements/ore.tscn").instantiate()
-var wheat = preload("res://Tiles/Elements/wheat.tscn").instantiate()
-var wood = preload("res://Tiles/Elements/wood.tscn").instantiate()
-var wool = preload("res://Tiles/Elements/wool.tscn")
+const brick = preload("res://Tiles/Elements/brick.tscn")
+const ore = preload("res://Tiles/Elements/ore.tscn")
+const wheat = preload("res://Tiles/Elements/wheat.tscn")
+const wood = preload("res://Tiles/Elements/wood.tscn")
+const wool = preload("res://Tiles/Elements/wool.tscn")
 
 var resource_list = [ brick, ore, wheat, wood, wool ]
-var random_index = randi() % resource_list.size()
-var selected_resource = resource_list[random_index]
 
 func _ready():
 	for tile in get_children():
-		var transform_ = tile.global_transform
-		var wool_tile = wool.instantiate()
-
-		wool_tile.global_transform = transform_
-		shuffled_tiles.add_child(wool_tile)
+		var location = tile.global_transform
+		resource_list.shuffle()
+		var random_resource = resource_list[0]
+		var resource_name = random_resource.instantiate()
+		replace_tile(random_resource, resource_name.name, location)
+		
 		tile.queue_free()
 
-
-#func replace_tile(resource, resource_name):
-	#resource.global_transform = global_transform
-	#for categories in shuffled_tiles.get_children():
-		#if categories.get_name() == resource_name:
-			#categories.add_child(resource)
+func replace_tile(resource, resource_name, location):
+	var resource_tile = resource.instantiate()
+	resource_tile.global_transform = location
+	for category in shuffled_tiles.get_children():
+		if category.get_name() == resource_name:
+			category.add_child(resource_tile)
 
 func get_collisions():
 	for tile in get_children():
