@@ -1,8 +1,10 @@
-[gd_scene load_steps=34 format=3 uid="uid://06s5ka43cdbc"]
+[gd_scene load_steps=31 format=3 uid="uid://06s5ka43cdbc"]
 
 [ext_resource type="PackedScene" uid="uid://ui6yxjaoto5r" path="res://Dice/die.tscn" id="2_jmah0"]
 [ext_resource type="Script" path="res://Tiles/tile.gd" id="3_3pdl5"]
+[ext_resource type="Environment" uid="uid://bba6q7161dgm8" path="res://misc/worse_env.tres" id="4_4melf"]
 [ext_resource type="PackedScene" uid="uid://deohpkwi5s7uf" path="res://Tiles/default_tile.tscn" id="4_jtt6g"]
+[ext_resource type="PackedScene" uid="uid://cp7ddab878yt6" path="res://terrain.tscn" id="4_wrrc7"]
 [ext_resource type="Script" path="res://misc/gd/cam.gd" id="5_a885l"]
 [ext_resource type="PackedScene" uid="uid://bus83smxdui76" path="res://House/tscn/house.tscn" id="6_j58a5"]
 [ext_resource type="Texture2D" uid="uid://6po1pv23ri4d" path="res://images/3275748.png" id="8_5ucd0"]
@@ -24,20 +26,6 @@ bounce = 1.0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_pc74m"]
 size = Vector3(1, 20, 8.56201)
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_ev2au"]
-size = Vector2(200, 200)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2hwn4"]
-
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_lj33s"]
-
-[sub_resource type="Sky" id="Sky_6hix6"]
-sky_material = SubResource("ProceduralSkyMaterial_lj33s")
-
-[sub_resource type="Environment" id="Environment_f0jdo"]
-background_mode = 2
-sky = SubResource("Sky_6hix6")
 
 [sub_resource type="Gradient" id="Gradient_bqj31"]
 colors = PackedColorArray(1, 1, 1, 0, 0.168627, 0.168627, 0.168627, 0.396078)
@@ -407,23 +395,14 @@ unique_name_in_owner = true
 
 [node name="making stuff look nicer" type="Node" parent="."]
 
+[node name="Node3D2" parent="making stuff look nicer" instance=ExtResource("4_wrrc7")]
+transform = Transform3D(-1.96701e-05, 0, 450, 0, 450, 0, -450, 0, -1.96701e-05, -142.671, -1.76079, 83.6386)
+
 [node name="Camera3D" type="Camera3D" parent="making stuff look nicer"]
 transform = Transform3D(1, -5.72983e-16, 2.67186e-16, 2.67186e-16, 0.766044, 0.642788, -5.72983e-16, -0.642788, 0.766044, 15, 15, 50)
+environment = ExtResource("4_4melf")
 fov = 58.633
 script = ExtResource("5_a885l")
-
-[node name="floor" type="MeshInstance3D" parent="making stuff look nicer"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.2529, -1.74644, 35.213)
-visible = false
-mesh = SubResource("PlaneMesh_ev2au")
-skeleton = NodePath("../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_2hwn4")
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="making stuff look nicer"]
-environment = SubResource("Environment_f0jdo")
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="making stuff look nicer"]
-transform = Transform3D(1, 0, 0, 0, 0.931024, 0.364958, 0, -0.364958, 0.931024, 0, 30.9552, 33.4555)
 
 [node name="all_houses" type="Node3D" parent="."]
 unique_name_in_owner = true
@@ -1821,6 +1800,7 @@ horizontal_alignment = 1
 
 [node name="bank" type="Button" parent="UI/bank"]
 unique_name_in_owner = true
+visible = false
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
@@ -2440,6 +2420,15 @@ offset_bottom = -88.0
 grow_horizontal = 0
 grow_vertical = 0
 text = "0"
+
+[node name="Node3D" type="Node3D" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Node3D"]
+environment = ExtResource("4_4melf")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Node3D"]
+transform = Transform3D(0.754232, -0.055399, 0.654267, -0.307935, -0.909904, 0.27794, 0.579923, -0.411102, -0.703338, 0.812747, 18.898, -27.6184)
+shadow_enabled = true
 
 [connection signal="roll_finished" from="diestuff/Die" to="diestuff" method="_on_die_roll_finished"]
 [connection signal="roll_finished" from="diestuff/Die" to="diestuff/Die" method="_on_roll_finished"]
