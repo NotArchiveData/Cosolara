@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=3 uid="uid://06s5ka43cdbc"]
+[gd_scene load_steps=55 format=3 uid="uid://06s5ka43cdbc"]
 
 [ext_resource type="Texture2D" uid="uid://g3i37gm1h4px" path="res://overcast_soil_puresky_4k.exr" id="1_rmshx"]
 [ext_resource type="PackedScene" uid="uid://ui6yxjaoto5r" path="res://Dice/die.tscn" id="2_jmah0"]
@@ -27,6 +27,7 @@
 [ext_resource type="Script" path="res://addons/proton_scatter/src/modifiers/project_on_geometry.gd" id="24_p4ete"]
 [ext_resource type="Script" path="res://addons/proton_scatter/src/shapes/box_shape.gd" id="27_65c6p"]
 [ext_resource type="Script" path="res://addons/proton_scatter/src/shapes/path_shape.gd" id="28_srf7x"]
+[ext_resource type="LightmapGIData" uid="uid://caenhd3d1r2fa" path="res://misc/tscn/plspls.lmbake" id="29_ox13v"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_uhkbh"]
 panorama = ExtResource("1_rmshx")
@@ -38,7 +39,9 @@ sky_material = SubResource("PanoramaSkyMaterial_uhkbh")
 background_mode = 2
 sky = SubResource("Sky_8hjb8")
 tonemap_mode = 2
-glow_enabled = true
+ssao_enabled = true
+ssao_radius = 2.0
+ssao_intensity = 8.0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vq0ci"]
 size = Vector3(17.0289, 1, 17.7095)
@@ -111,7 +114,7 @@ corner_radius_top_right = 100
 corner_radius_bottom_right = 100
 corner_radius_bottom_left = 100
 
-[sub_resource type="Resource" id="Resource_7ksgk"]
+[sub_resource type="Resource" id="Resource_7jd77"]
 script = ExtResource("21_uroud")
 amount = 5000
 enabled = true
@@ -120,7 +123,7 @@ custom_seed = 0
 restrict_height = true
 reference_frame = 1
 
-[sub_resource type="Resource" id="Resource_high8"]
+[sub_resource type="Resource" id="Resource_xa08n"]
 script = ExtResource("22_vmxtf")
 position = Vector3(0.15, 0.15, 0.15)
 rotation = Vector3(5, 360, 5)
@@ -131,7 +134,7 @@ custom_seed = 0
 restrict_height = false
 reference_frame = 2
 
-[sub_resource type="Resource" id="Resource_7x03w"]
+[sub_resource type="Resource" id="Resource_ex4jg"]
 script = ExtResource("23_6if16")
 iterations = 3
 offset_step = 0.2
@@ -143,7 +146,7 @@ custom_seed = 0
 restrict_height = true
 reference_frame = 0
 
-[sub_resource type="Resource" id="Resource_xccyx"]
+[sub_resource type="Resource" id="Resource_nh0sa"]
 script = ExtResource("24_p4ete")
 ray_direction = Vector3(0, -1, 0)
 ray_length = 5.0
@@ -159,9 +162,9 @@ custom_seed = 0
 restrict_height = false
 reference_frame = 0
 
-[sub_resource type="Resource" id="Resource_b3u6t"]
+[sub_resource type="Resource" id="Resource_a2xas"]
 script = ExtResource("18_5gp14")
-stack = Array[Resource("res://addons/proton_scatter/src/modifiers/base_modifier.gd")]([SubResource("Resource_7ksgk"), SubResource("Resource_high8"), SubResource("Resource_7x03w"), SubResource("Resource_xccyx")])
+stack = Array[Resource("res://addons/proton_scatter/src/modifiers/base_modifier.gd")]([SubResource("Resource_7jd77"), SubResource("Resource_xa08n"), SubResource("Resource_ex4jg"), SubResource("Resource_nh0sa")])
 
 [sub_resource type="Resource" id="Resource_vkdeo"]
 script = ExtResource("27_65c6p")
@@ -2529,6 +2532,8 @@ text = "0"
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Node3D"]
 transform = Transform3D(0.754232, -0.0553991, 0.654267, -0.307935, -0.909904, 0.277939, 0.579923, -0.411102, -0.703338, 0.812747, 41.898, -27.6184)
+visible = false
+light_bake_mode = 1
 shadow_enabled = true
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
@@ -2539,7 +2544,7 @@ size = Vector3(350, 1, 350)
 [node name="ProtonScatter" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.7185, 0)
 script = ExtResource("17_3xfxj")
-modifier_stack = SubResource("Resource_b3u6t")
+modifier_stack = SubResource("Resource_a2xas")
 Performance/use_chunks = true
 Performance/chunk_dimensions = Vector3(15, 15, 15)
 
@@ -2573,6 +2578,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 46.2857, 0, -0.429142)
 script = ExtResource("20_jr63q")
 negative = true
 shape = SubResource("Resource_djhvr")
+
+[node name="LightmapGI" type="LightmapGI" parent="."]
+light_data = ExtResource("29_ox13v")
 
 [connection signal="roll_finished" from="diestuff/Die" to="diestuff" method="_on_die_roll_finished"]
 [connection signal="roll_finished" from="diestuff/Die" to="diestuff/Die" method="_on_roll_finished"]
