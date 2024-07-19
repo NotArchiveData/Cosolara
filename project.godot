@@ -27,7 +27,7 @@ window/size/viewport_height=1080
 
 [editor_plugins]
 
-enabled=PackedStringArray()
+enabled=PackedStringArray("res://addons/proton_scatter/plugin.cfg")
 
 [file_customization]
 
@@ -79,8 +79,3 @@ down={
 3d_physics/layer_3="House"
 3d_physics/layer_4="Road"
 3d_physics/layer_16="die_wall_table"
-
-[rendering]
-
-renderer/rendering_method="gl_compatibility"
-renderer/rendering_method.mobile="gl_compatibility"
