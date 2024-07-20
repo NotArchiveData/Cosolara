@@ -1,6 +1,7 @@
 extends Node3D
 
 @onready var shuffled_tiles = %shuffled_tiles
+@onready var timer = %Timer
 
 const brick = preload("res://Tiles/Elements/brick.tscn")
 const ore = preload("res://Tiles/Elements/ore.tscn")
@@ -52,6 +53,20 @@ func get_collisions():
 										var um = str(category.name)
 										global.res[um] += 10
 										global_signal.resources()
+				
+				if layer.get_name() == "number":
+					if str(global.die_sum) == layer.text && layer is Label3D:
+						layer.set_modulate(Color( 0.587, 0.587, 0.587 ))
+						timer.start()
+						#for layer_ in tile.get_children():
+							#if layer_ is MeshInstance3D:
+								#pass
 
-
-
+func _on_timer_timeout():
+	# Revert the colour of the text on the tiles
+	for category in shuffled_tiles.get_children():
+		for tile in category.get_children():
+			for layer in tile.get_children():
+				if layer.get_name() == "number":
+					if str(global.die_sum) == layer.text && layer is Label3D:
+						layer.set_modulate(Color(0, 0, 0))
