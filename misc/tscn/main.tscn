@@ -1,5 +1,6 @@
-[gd_scene load_steps=53 format=3 uid="uid://06s5ka43cdbc"]
+[gd_scene load_steps=55 format=3 uid="uid://06s5ka43cdbc"]
 
+[ext_resource type="Script" path="res://misc/tscn/a_main.gd" id="1_80t28"]
 [ext_resource type="Texture2D" uid="uid://g3i37gm1h4px" path="res://environment/overcast_soil_puresky_4k.exr" id="1_rmshx"]
 [ext_resource type="PackedScene" uid="uid://ui6yxjaoto5r" path="res://Dice/die.tscn" id="2_jmah0"]
 [ext_resource type="Script" path="res://Tiles/tile.gd" id="3_3pdl5"]
@@ -28,6 +29,7 @@
 [ext_resource type="Script" path="res://addons/proton_scatter/src/shapes/box_shape.gd" id="27_65c6p"]
 [ext_resource type="Script" path="res://addons/proton_scatter/src/shapes/path_shape.gd" id="28_srf7x"]
 [ext_resource type="LightmapGIData" uid="uid://caenhd3d1r2fa" path="res://misc/tscn/plspls.lmbake" id="29_ox13v"]
+[ext_resource type="PackedScene" uid="uid://h886d0wyhtll" path="res://pause_menu.tscn" id="30_vy8ey"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_uhkbh"]
 panorama = ExtResource("1_rmshx")
@@ -43,16 +45,16 @@ ssao_enabled = true
 ssao_radius = 2.0
 ssao_intensity = 8.0
 
-[sub_resource type="Resource" id="Resource_tfneg"]
+[sub_resource type="Resource" id="Resource_78kcb"]
 script = ExtResource("21_uroud")
 amount = 5000
-enabled = false
+enabled = true
 override_global_seed = false
 custom_seed = 0
 restrict_height = true
 reference_frame = 1
 
-[sub_resource type="Resource" id="Resource_lgijo"]
+[sub_resource type="Resource" id="Resource_ja5fw"]
 script = ExtResource("22_vmxtf")
 position = Vector3(0.15, 0.15, 0.15)
 rotation = Vector3(5, 360, 5)
@@ -63,7 +65,7 @@ custom_seed = 0
 restrict_height = false
 reference_frame = 2
 
-[sub_resource type="Resource" id="Resource_ln4l5"]
+[sub_resource type="Resource" id="Resource_tnqvm"]
 script = ExtResource("23_6if16")
 iterations = 3
 offset_step = 0.2
@@ -75,7 +77,7 @@ custom_seed = 0
 restrict_height = true
 reference_frame = 0
 
-[sub_resource type="Resource" id="Resource_qpyom"]
+[sub_resource type="Resource" id="Resource_6luyl"]
 script = ExtResource("24_p4ete")
 ray_direction = Vector3(0, -1, 0)
 ray_length = 5.0
@@ -91,9 +93,9 @@ custom_seed = 0
 restrict_height = false
 reference_frame = 0
 
-[sub_resource type="Resource" id="Resource_0ftbi"]
+[sub_resource type="Resource" id="Resource_t0a0g"]
 script = ExtResource("18_5gp14")
-stack = Array[Resource("res://addons/proton_scatter/src/modifiers/base_modifier.gd")]([SubResource("Resource_tfneg"), SubResource("Resource_lgijo"), SubResource("Resource_ln4l5"), SubResource("Resource_qpyom")])
+stack = Array[Resource("res://addons/proton_scatter/src/modifiers/base_modifier.gd")]([SubResource("Resource_78kcb"), SubResource("Resource_ja5fw"), SubResource("Resource_tnqvm"), SubResource("Resource_6luyl")])
 
 [sub_resource type="Resource" id="Resource_vkdeo"]
 script = ExtResource("27_65c6p")
@@ -109,7 +111,7 @@ point_count = 95
 [sub_resource type="Resource" id="Resource_k0j23"]
 script = ExtResource("28_srf7x")
 closed = true
-thickness = 2.08165e-12
+thickness = 5.0
 curve = SubResource("Curve3D_s1m6n")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vq0ci"]
@@ -184,6 +186,7 @@ corner_radius_bottom_right = 100
 corner_radius_bottom_left = 100
 
 [node name="Game" type="Node3D"]
+script = ExtResource("1_80t28")
 
 [node name="Environment" type="Node3D" parent="."]
 
@@ -193,7 +196,7 @@ environment = SubResource("Environment_6fu01")
 [node name="ProtonScatter" type="Node3D" parent="Environment"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.7185, 0)
 script = ExtResource("17_3xfxj")
-modifier_stack = SubResource("Resource_0ftbi")
+modifier_stack = SubResource("Resource_t0a0g")
 Performance/use_chunks = true
 Performance/chunk_dimensions = Vector3(15, 15, 15)
 
@@ -2570,6 +2573,9 @@ text = "0"
 
 [node name="LightmapGI" type="LightmapGI" parent="."]
 light_data = ExtResource("29_ox13v")
+
+[node name="pause_menu" parent="." instance=ExtResource("30_vy8ey")]
+visible = false
 
 [connection signal="roll_finished" from="dice/Die" to="dice" method="_on_die_roll_finished"]
 [connection signal="roll_finished" from="dice/Die" to="dice/Die" method="_on_roll_finished"]
