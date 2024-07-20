@@ -18,7 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 global="*res://misc/gd/global.gd"
-global_signal="*res://global_signal.gd"
+global_signal="*res://misc/gd/global_signal.gd"
 
 [display]
 
@@ -34,7 +34,8 @@ enabled=PackedStringArray("res://addons/proton_scatter/plugin.cfg")
 folder_colors={
 "res://Dice/": "yellow",
 "res://House/": "orange",
-"res://Roads/": "orange"
+"res://Roads/": "orange",
+"res://Tiles/": "orange"
 }
 
 [input]
