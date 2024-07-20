@@ -3,7 +3,7 @@ extends Node3D
 @onready var pause_menu = $pause_menu
 var paused = false
 
-func _process(delta):
+func _process(_delta):
 	if Input.is_action_just_pressed("pause"):
 		pause()
 		
