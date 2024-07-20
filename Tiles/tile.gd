@@ -45,15 +45,25 @@ func get_collisions():
 				if layer.get_name() == "Raycast":
 					for raycast in layer.get_children():
 						if raycast.is_colliding():
+							var level = raycast.get_collider()
 							var layer_ = raycast.get_parent()
 							var category_ = layer_.get_parent()
-							for name_ in category_.get_children():
-								if name_.get_name() == "number":
-									if str(global.die_sum) == name_.text:
-										var um = str(category.name)
-										global.res[um] += 10
-										global_signal.resources()
-				
+							var um = str(category.name)
+							
+							if level.get_name() == "house_lv1":
+								for name_ in category_.get_children():
+									if name_.get_name() == "number":
+										if str(global.die_sum) == name_.text:
+											global.res[um] += 10
+											global_signal.resources()
+							
+							elif level.get_name() == "house_lv2":
+								for name_ in category_.get_children():
+									if name_.get_name() == "number":
+										if str(global.die_sum) == name_.text:
+											global.res[um] += 20
+											global_signal.resources()
+
 				if layer.get_name() == "number":
 					if str(global.die_sum) == layer.text && layer is Label3D:
 						layer.set_modulate(Color( 0.587, 0.587, 0.587 ))
