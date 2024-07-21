@@ -14,4 +14,4 @@ sky = SubResource("Sky_8hjb8")
 tonemap_mode = 2
 ssao_enabled = true
 ssao_radius = 5.0
-ssao_intensity = 8.0
+ssao_intensity = 5.0

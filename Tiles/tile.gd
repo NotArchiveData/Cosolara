@@ -18,10 +18,10 @@ func _ready():
 		var location = tile.global_transform
 		resource_list.shuffle()
 		var random_resource = resource_list[0]
-		replace_tile(random_resource, location)
-		tile.queue_free()
-		
-	randomize_tile_numbers()
+		#replace_tile(random_resource, location)
+		#tile.queue_free()
+		#
+	#randomize_tile_numbers()
 
 func replace_tile(resource, location):
 	var resource_tile = resource.instantiate()

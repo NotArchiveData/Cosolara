@@ -5,7 +5,7 @@ uniform sampler2D SCREEN_TEXTURE: hint_screen_texture, filter_linear_mipmap;
 uniform sampler2D NORMAL_TEXTURE : hint_normal_roughness_texture, filter_linear_mipmap;
 uniform sampler2D DEPTH_TEXTURE : source_color, hint_depth_texture;
 
-uniform float depth_range:hint_range(0.1, 100.0, 0.1);
+uniform float depth_range:hint_range(0.1, 500.0, 0.1);
 
 void vertex(){
 	POSITION = vec4(VERTEX, 1.0);
