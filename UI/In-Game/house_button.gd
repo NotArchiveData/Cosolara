@@ -11,7 +11,7 @@ func _on_pressed():
 	
 	if global.housebuttonpressed == 0:
 		
-		if global.res["brick"] > 20 && global.res["wood"] > 20:
+		if global.res["brick"] >= 100 && global.res["wood"] >= 70 && global.res["coins"] >= 40:
 			global.housebuttonpressed = 1
 			can_i_place_house()
 			are_all_children_hidden()

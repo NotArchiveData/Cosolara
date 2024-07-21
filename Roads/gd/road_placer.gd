@@ -3,7 +3,9 @@ extends Node3D
 @onready var placed_roads = %placed_roads
 @onready var roads = %all_roads
 
-const ROAD = preload("res://Roads/tscn/placed_road.tscn")
+var road = preload("res://Roads/tscn/placed_road.tscn").instantiate()
+const HOVER = preload("res://House/colour/hover.tres")
+const GREEN = preload("res://House/colour/green.tres")
 
 func _on_click_input_event(_camera, event, _position, _normal, _shape_idx):
 	if event is InputEventMouseButton:
@@ -12,11 +14,21 @@ func _on_click_input_event(_camera, event, _position, _normal, _shape_idx):
 			queue_free()
 			
 			roads.hide()
-			global.res["coins"] -= 10
-			global_signal.resources()
+			
+			global.buy_road()
 			global.roadbuttonpressed = 0
 
 func build_my_road():
-	var road_instantiated = ROAD.instantiate()
-	road_instantiated.global_transform = global_transform
-	placed_roads.add_child(road_instantiated)
+	road.global_transform = global_transform
+	placed_roads.add_child(road)
+
+func mouse_entered():
+	colour_change(HOVER)
+
+func mouse_exited():
+	colour_change(GREEN)
+
+func colour_change(material):
+	for mesh in get_children():
+			if mesh.get_name() == "road" && mesh is MeshInstance3D:
+				mesh.material_override = material

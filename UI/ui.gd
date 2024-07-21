@@ -8,6 +8,7 @@ extends Control
 @onready var coin_label = %coin_label
 
 func _ready():
+	_on_changed_resource()
 	global_signal.changed_resource.connect(_on_changed_resource)
 	
 func _on_changed_resource():

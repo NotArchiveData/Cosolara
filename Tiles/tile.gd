@@ -49,19 +49,19 @@ func get_collisions():
 							var layer_ = raycast.get_parent()
 							var category_ = layer_.get_parent()
 							var um = str(category.name)
-							
+
 							if level.get_name() == "house_lv1":
 								for name_ in category_.get_children():
 									if name_.get_name() == "number":
 										if str(global.die_sum) == name_.text:
-											global.res[um] += 10
+											global.res[um] += randi_range(5, 15)
 											global_signal.resources()
 							
 							elif level.get_name() == "house_lv2":
 								for name_ in category_.get_children():
 									if name_.get_name() == "number":
 										if str(global.die_sum) == name_.text:
-											global.res[um] += 20
+											global.res[um] += randi_range(25, 50)
 											global_signal.resources()
 
 				if layer.get_name() == "number":

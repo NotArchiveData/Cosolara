@@ -7,9 +7,8 @@ func _on_area_3d_input_event(_camera, event, _position, _normal, _shape_idx):
 		if event.button_index == MOUSE_BUTTON_LEFT && event.pressed == true:
 			build_my_house()
 			queue_free()
-			
-			#global.res["coins"] -= 20
-			#global_signal.resources()
+
+			global.upgrade_house()
 			global.housebuttonpressed = 0
 			
 func build_my_house():
