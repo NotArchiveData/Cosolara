@@ -1,0 +1,17 @@
+[gd_resource type="Environment" load_steps=4 format=3 uid="uid://c3arlptyiwfj1"]
+
+[ext_resource type="Texture2D" uid="uid://g3i37gm1h4px" path="res://environment/overcast_soil_puresky_4k.exr" id="1_7yn62"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_uhkbh"]
+panorama = ExtResource("1_7yn62")
+
+[sub_resource type="Sky" id="Sky_8hjb8"]
+sky_material = SubResource("PanoramaSkyMaterial_uhkbh")
+
+[resource]
+background_mode = 2
+sky = SubResource("Sky_8hjb8")
+tonemap_mode = 2
+ssao_enabled = true
+ssao_radius = 5.0
+ssao_intensity = 8.0

@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://cn33tt85swc6u"]
 
-[ext_resource type="Script" path="res://House/tscn/house_upgrader.gd" id="1_85jud"]
+[ext_resource type="Script" path="res://House/gd/house_upgrader.gd" id="1_85jud"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_wewau"]
 resource_name = "medieval_building_Cube_445"
