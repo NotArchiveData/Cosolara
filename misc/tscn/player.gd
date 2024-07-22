@@ -45,7 +45,7 @@ func _physics_process(delta):
 		gravity = 9.8
 		flying = false
 
-	# Handle jump.
+	# Handle jump & flight (upwards)
 	if Input.is_action_pressed("up"):
 		# pressed spacebar
 		
@@ -71,7 +71,14 @@ func _physics_process(delta):
 
 	elif flying:
 		velocity.y = 0
-
+	
+	# Handle flight ( downwards )
+	
+	if Input.is_action_pressed("down"):
+		velocity.y -= FLY_DOWN
+		print("going dowwwwwwwn")
+		
+		
 	# Handle sprint.
 	if Input.is_action_pressed("sprint"):
 		speed = SPRINT_SPEED
