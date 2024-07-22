@@ -17,8 +17,13 @@ var t_bob = 0.0
 #fov variables
 const BASE_FOV = 90.0
 const FOV_CHANGE = 1.5
+
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = 9.8
+const FLY_UP = 10
+const FLY_DOWN = 10
+
+var flying = false
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -30,36 +35,64 @@ func _unhandled_input(event):
 		headcam.rotation.x = clamp(headcam.rotation.x, deg_to_rad(-40), deg_to_rad(60))
 		
 func _physics_process(delta):
+	var input_dir = Input.get_vector("left", "right", "forward", "backward")
+	var direction = (head.transform.basis * Vector3(input_dir.x, 1, input_dir.y)).normalized()
 	# Add the gravity.
-	if not is_on_floor():
+	if not is_on_floor() && not flying:
 		velocity.y -= gravity * delta
 
+	elif is_on_floor() && flying:
+		gravity = 9.8
+		flying = false
+
 	# Handle jump.
-	if Input.is_action_just_pressed("up") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
-	
+	if Input.is_action_pressed("up"):
+		# pressed spacebar
+		
+		if Input.is_action_just_pressed("up"):
+			if is_on_floor():
+				# ONLY jump when on the ground
+				velocity.y = JUMP_VELOCITY
+			
+			else:
+				# start flying if spacebar pressed again
+				gravity = 0
+				velocity.y = 0
+				flying = true
+			
+		else:
+			if is_on_floor():
+				# KEEP jumping if you hold spacebar
+				velocity.y = JUMP_VELOCITY
+			
+			elif gravity == 0:
+				# flying up
+				velocity.y = direction.y * FLY_UP
+
+	elif flying:
+		velocity.y = 0
+
 	# Handle sprint.
 	if Input.is_action_pressed("sprint"):
 		speed = SPRINT_SPEED
 	
 	else:
 		speed = WALK_SPEED
-
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
-	var input_dir = Input.get_vector("left", "right", "forward", "backward")
-	var direction = (head.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+	
+	# Walking
 	if is_on_floor():
-		if direction:
+		if direction.x or direction.z:
 			velocity.x = direction.x * speed
 			velocity.z = direction.z * speed
 		else:
-			velocity.x = lerp(velocity.x, direction.x * speed, delta * 7.0)
-			velocity.z = lerp(velocity.z, direction.z * speed, delta * 7.0)
+			velocity.x = lerp(velocity.x, direction.x * speed, delta * 5.0)
+			velocity.z = lerp(velocity.z, direction.z * speed, delta * 5.0)
 	
 	else:
+		# adding jump inertia
 		velocity.x = lerp(velocity.x, direction.x * speed, delta * 3.0)
 		velocity.z = lerp(velocity.z, direction.z * speed, delta * 3.0)
+		
 	#headbob
 	t_bob += delta * velocity.length() * float(is_on_floor())
 	headcam.transform.origin = headbob(t_bob)
