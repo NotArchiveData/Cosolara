@@ -10,12 +10,15 @@ const GREEN = preload("res://House/colour/green.tres")
 func _on_area_3d_input_event(_camera, event, _position, _normal, _shape_idx):
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed == true:
-			build_my_house()
-			queue_free()
-			houses.hide()
-
-			global.buy_house()
-			global.housebuttonpressed = 0
+			if global.res["brick"] >= 100 && global.res["wood"] >= 70 && global.res["coins"] >= 40:
+				build_my_house()
+				global.buy_house()
+				queue_free()
+				houses.hide()
+				global.housebuttonpressed = 0
+			
+			else:
+				print("no money")
 
 func build_my_house():
 	house.global_transform = global_transform

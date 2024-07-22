@@ -10,13 +10,15 @@ const GREEN = preload("res://House/colour/green.tres")
 func _on_click_input_event(_camera, event, _position, _normal, _shape_idx):
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed == true:
-			build_my_road()
-			queue_free()
+			if global.res["brick"] >= 100 && global.res["wood"] >= 70 && global.res["coins"] >= 40:
+				build_my_road()
+				global.buy_road()
+				queue_free()
+				roads.hide()
+				global.roadbuttonpressed = 0
 			
-			roads.hide()
-			
-			global.buy_road()
-			global.roadbuttonpressed = 0
+			else:
+				print("no money")
 
 func build_my_road():
 	road.global_transform = global_transform

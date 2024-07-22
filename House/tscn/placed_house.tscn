@@ -31,7 +31,7 @@ _surfaces = [{
 }]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_avul0"]
-size = Vector3(30, 30, 30)
+size = Vector3(20, 10, 20)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q4yqp"]
 albedo_color = Color(0.572549, 1, 1, 1)

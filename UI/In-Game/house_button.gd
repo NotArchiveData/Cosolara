@@ -10,15 +10,10 @@ func _on_pressed():
 	global.roadbuttonpressed = 0
 	
 	if global.housebuttonpressed == 0:
-		
-		if global.res["brick"] >= 100 && global.res["wood"] >= 70 && global.res["coins"] >= 40:
-			global.housebuttonpressed = 1
-			can_i_place_house()
-			are_all_children_hidden()
-			houses.show()
-		
-		else:
-			print("Can't place more houses, resources missing")
+		global.housebuttonpressed = 1
+		can_i_place_house()
+		are_all_children_hidden()
+		houses.show()
 	
 	elif global.housebuttonpressed == 1:
 		houses.hide()
