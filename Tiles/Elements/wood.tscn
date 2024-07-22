@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://b2ykqkbr7w0oa"]
+[gd_scene load_steps=12 format=3 uid="uid://b2ykqkbr7w0oa"]
 
 [ext_resource type="PackedScene" uid="uid://d3ilpsa0rbetl" path="res://Tiles/tile_raycast.tscn" id="1_ew1ja"]
 
@@ -35,6 +35,9 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_wy5ho")
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_0b30k"]
+points = PackedVector3Array(0.369838, -0.968018, -0.786468, 0.0375385, 0.978326, 0.978326, -0.0533889, 0.969175, 0.969175, 0.0375385, 0.978326, -0.978326, -0.840701, -0.968895, 0.514607, 0.866, -0.981719, 0.490667, 0.866, 0.981719, -0.490667, -0.840701, 0.968895, -0.514607, -0.840701, -0.968895, -0.514607, 0.0375385, -0.978326, 0.978326, 0.866, 0.981719, 0.490667, -0.840701, 0.968895, 0.514607, 0.866, -0.981719, -0.490667, -0.0533889, -0.969175, -0.969175, -0.0533889, 0.969175, -0.969175, -0.0533889, -0.969175, 0.969175, 0.0375385, -0.978326, -0.978326, 0.832202, 0.978134, 0.519514, 0.832202, 0.978134, -0.519514, 0.832202, -0.978134, 0.519514, 0.832202, -0.978134, -0.519514)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qdt6n"]
 albedo_color = Color(0.643137, 0.466667, 0.211765, 1)
@@ -118,6 +121,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.047533, 0, 0)
 transform = Transform3D(-7.37819, 0, 0, 0, -5.24363, 0, 0, 0, -7.37819, 0, -5.00778, 0)
 mesh = SubResource("ArrayMesh_e2xj6")
 skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="1"]
+collision_mask = 0
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="1/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_0b30k")
 
 [node name="Cylinder_001" type="MeshInstance3D" parent="."]
 transform = Transform3D(-6.8291, 0, 0, 0, -0.195311, 0, 0, 0, -6.8291, 0, 0.319468, 0)
