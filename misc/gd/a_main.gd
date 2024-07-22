@@ -4,7 +4,7 @@ extends Node3D
 var paused = false
 
 func _process(_delta):
-	if Input.is_action_just_pressed("pause"):
+	if Input.is_action_just_pressed("esc"):
 		pause()
 		
 func pause():
