@@ -126,7 +126,6 @@ skeleton = NodePath("")
 collision_mask = 0
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="1/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 shape = SubResource("ConvexPolygonShape3D_ktctn")
 
 [node name="Cylinder_001" type="MeshInstance3D" parent="."]

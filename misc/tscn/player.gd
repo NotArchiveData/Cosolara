@@ -37,18 +37,12 @@ var single_press_detected = false
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
-func _unhandled_input(event):
-	if event is InputEventMouseMotion:
-		head.rotate_y(-event.relative.x * SENSITIVITY)
-		headcam.rotate_x(-event.relative.y * SENSITIVITY)
-		headcam.rotation.x = clamp(headcam.rotation.x, deg_to_rad(-40), deg_to_rad(60))
-		
 func _physics_process(delta):
 	if single_press_detected:
 		time_since_last_press += delta
-		
-	var input_dir = Input.get_vector("left", "right", "forward", "backward")
-	var direction = (head.transform.basis * Vector3(input_dir.x, 1, input_dir.y)).normalized()
+	
+	var direction = main_movement()
+
 	# Add the gravity.
 	if not is_on_floor() && not flying:
 		velocity.y -= gravity * delta
@@ -56,68 +50,12 @@ func _physics_process(delta):
 	elif is_on_floor() && flying:
 		gravity = 9.8
 		flying = false
-
-	# Handle jump & flight (upwards)
-	if Input.is_action_pressed("up"):
-		# pressed spacebar
-		if gravity != 0:
-			if Input.is_action_just_pressed("up"):
-				if is_on_floor():
-					# ONLY jump when on the ground
-					velocity.y = JUMP_VELOCITY
-				
-				elif not is_on_floor():
-					# start flying if spacebar pressed again
-					gravity = 0
-					velocity.y = 0
-					flying = true
-					print("does it keep coming here?")
-				
-			else:
-				if is_on_floor():
-					# KEEP jumping if you hold spacebar
-					velocity.y = JUMP_VELOCITY
-				
-				elif gravity == 0:
-					# flying up
-					velocity.y = direction.y * FLY_UP
-		
-		elif gravity == 0:
-			# flying up
-			velocity.y = direction.y * FLY_UP
-
-			# Check if the key is pressed
-			if Input.is_action_just_pressed("up"):
-				# If the key was pressed within the double_press_time, it's a double press
-				if single_press_detected and time_since_last_press <= double_press_time:
-					print("Double press detected")
-					gravity = 9.8
-					flying = false
-					# Reset the timer and flag
-					time_since_last_press = 0
-					single_press_detected = false
-				else:
-					# First press detected, start the timer
-					single_press_detected = true
-					time_since_last_press = 0
-
-			# If the time exceeds the double press time, reset the flag
-			if time_since_last_press > double_press_time:
-				single_press_detected = false
-
-	elif flying:
+	
+	if flying:
 		velocity.y = 0
-	
-	# Handle flight ( downwards )
-	if Input.is_action_pressed("down"):
-		velocity.y -= FLY_DOWN
 		
-	# Handle sprint.
-	if Input.is_action_pressed("sprint"):
-		speed = SPRINT_SPEED
-	
-	else:
-		speed = WALK_SPEED
+	speed = WALK_SPEED
+	misc_movement(direction)
 	
 	# Walking
 	if is_on_floor():
@@ -143,6 +81,76 @@ func _physics_process(delta):
 	headcam.fov = lerp(headcam.fov, target_fov, delta * 8.0)
 
 	move_and_slide()
+
+# Head movement
+func _input(event):
+	if event is InputEventMouseMotion:
+		head.rotate_y(-event.relative.x * SENSITIVITY)
+		headcam.rotate_x(-event.relative.y * SENSITIVITY)
+		headcam.rotation.x = clamp(headcam.rotation.x, deg_to_rad(-90), deg_to_rad(90))
+
+func misc_movement(distance):
+	# Handle sprint.
+	if Input.is_action_pressed("sprint"):
+		speed = SPRINT_SPEED
+		
+	# Handle jump & flight (upwards)
+	if Input.is_action_pressed("up"):
+		# pressed spacebar
+		if gravity != 0:
+			if Input.is_action_just_pressed("up"):
+				if is_on_floor():
+					# ONLY jump when on the ground
+					velocity.y = JUMP_VELOCITY
+				
+				elif not is_on_floor():
+					# start flying if spacebar pressed again
+					gravity = 0
+					velocity.y = 0
+					flying = true
+					print("does it keep coming here?")
+				
+			else:
+				if is_on_floor():
+					# KEEP jumping if you hold spacebar
+					velocity.y = JUMP_VELOCITY
+				
+				elif gravity == 0:
+					# flying up
+					velocity.y = distance.y * FLY_UP
+		
+		elif gravity == 0:
+			# flying up
+			velocity.y = distance.y * FLY_UP
+
+			# Check if the key is pressed
+			if Input.is_action_just_pressed("up"):
+				# If the key was pressed within the double_press_time, it's a double press
+				if single_press_detected and time_since_last_press <= double_press_time:
+					print("Double press detected")
+					gravity = 9.8
+					flying = false
+					# Reset the timer and flag
+					time_since_last_press = 0
+					single_press_detected = false
+				else:
+					# First press detected, start the timer
+					single_press_detected = true
+					time_since_last_press = 0
+
+			# If the time exceeds the double press time, reset the flag
+			if time_since_last_press > double_press_time:
+				single_press_detected = false
+
+	# Handle flight ( downwards )
+	if Input.is_action_pressed("down"):
+		velocity.y -= FLY_DOWN
+
+func main_movement():
+	var input_dir = Input.get_vector("left", "right", "forward", "backward")
+	var direction = (head.transform.basis * Vector3(input_dir.x, 1, input_dir.y)).normalized()
+	
+	return direction
 
 func headbob(time) -> Vector3:
 	var pos = Vector3.ZERO
