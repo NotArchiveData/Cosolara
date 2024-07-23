@@ -4,13 +4,13 @@ extends CharacterBody3D
 @onready var headcam = $head/headcam
 
 var speed = 10.0
-const WALK_SPEED = 10.0
-const SPRINT_SPEED = 20.0
-const JUMP_VELOCITY = 7
+const WALK_SPEED = 15.0
+const SPRINT_SPEED = 25.0
+const JUMP_VELOCITY = 7.0
 const SENSITIVITY = 0.01
 
 #bob variables
-const BOB_FREQ = 2.0
+const BOB_FREQ = 1.0
 const BOB_AMP = 0.08
 var t_bob = 0.0
 
@@ -31,8 +31,8 @@ var double_press_time = 0.3
 var time_since_last_press = 0
 var single_press_detected = false
 
-func _ready():
-	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+# Mouse changes
+var build_mode = true
 
 func _physics_process(delta):
 	if single_press_detected:
@@ -50,18 +50,19 @@ func _physics_process(delta):
 	headcam.transform.origin = headbob(t_bob)
 	
 	#FOV
-	var velocity_clamped = clamp(velocity.length(), 0.5, speed * 2)
-	var target_fov = BASE_FOV + FOV_CHANGE * velocity_clamped
-	headcam.fov = lerp(headcam.fov, target_fov, delta * 8.0)
+	#var velocity_clamped = clamp(velocity.length(), 0.5, speed * 2)
+	#var target_fov = BASE_FOV + FOV_CHANGE * velocity_clamped
+	#headcam.fov = lerp(headcam.fov, target_fov, delta * 8.0)
 
 	move_and_slide()
-	print("y velocity: ", velocity.y)
 
 func _input(event):
 	if event is InputEventMouseMotion:
-		head.rotate_y(-event.relative.x * SENSITIVITY / 2)
-		headcam.rotate_x(-event.relative.y * SENSITIVITY / 2)
-		headcam.rotation.x = clamp(headcam.rotation.x, deg_to_rad(-90), deg_to_rad(90))
+		if build_mode == false:
+			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+			head.rotate_y(-event.relative.x * SENSITIVITY / 2)
+			headcam.rotate_x(-event.relative.y * SENSITIVITY / 2)
+			headcam.rotation.x = clamp(headcam.rotation.x, deg_to_rad(-90), deg_to_rad(90))
 
 func misc_movement():
 	# Handle sprint.
@@ -117,6 +118,13 @@ func misc_movement():
 	if Input.is_action_pressed("down"):
 		if not is_on_floor() && flying:
 			velocity.y -= FLY_DOWN
+	
+	if Input.is_action_just_pressed("look_around"):
+		if build_mode == true:
+			build_mode = false
+			
+		else:
+			build_mode = true
 
 func apply_gravity(delta):
 	# Add the gravity.

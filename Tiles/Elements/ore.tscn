@@ -124,6 +124,7 @@ mesh = SubResource("ArrayMesh_fijaj")
 skeleton = NodePath("")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="1"]
+collision_layer = 2
 collision_mask = 0
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="1/StaticBody3D"]
