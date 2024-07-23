@@ -90,4 +90,5 @@ sprint={
 
 3d_physics/layer_3="House"
 3d_physics/layer_4="Road"
+3d_physics/layer_15="world border"
 3d_physics/layer_16="die_wall_table"
