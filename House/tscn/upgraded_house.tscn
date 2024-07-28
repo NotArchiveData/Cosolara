@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://crfkbsvukd51g"]
+[gd_scene load_steps=6 format=3 uid="uid://crfkbsvukd51g"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_x7wr6"]
 resource_name = "medieval_building_Cube_445"
@@ -37,6 +37,15 @@ top_radius = 2.0
 bottom_radius = 2.5
 height = 1.0
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uf27c"]
+albedo_color = Color(0.196078, 0.396078, 0.345098, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_snnwt"]
+material = SubResource("StandardMaterial3D_uf27c")
+top_radius = 2.5
+bottom_radius = 2.5
+height = 1.0
+
 [node name="house_lv2" type="StaticBody3D"]
 collision_layer = 4
 collision_mask = 0
@@ -64,6 +73,11 @@ skeleton = NodePath("")
 [node name="mound" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, -0.582, 2.08165e-12)
 mesh = SubResource("CylinderMesh_3un8v")
+skeleton = NodePath("")
+
+[node name="mound2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 16.1114, 0, 0, 0, 1, 2.08165e-12, -8.582, 2.08165e-12)
+mesh = SubResource("CylinderMesh_snnwt")
 skeleton = NodePath("")
 
 [node name="check_house" type="CollisionPolygon3D" parent="."]

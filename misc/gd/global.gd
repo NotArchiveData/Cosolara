@@ -1,12 +1,21 @@
 extends Node
 
+#var res = {
+	#"brick": 250, 
+	#"ore": 0, 
+	#"wheat": 110, 
+	#"wood": 180, 
+	#"wool": 105, 
+	#"coins": 150
+#}
+
 var res = {
-	"brick": 250, 
-	"ore": 0, 
-	"wheat": 110, 
-	"wood": 180, 
-	"wool": 105, 
-	"coins": 150
+	"brick": 1000, 
+	"ore": 1000, 
+	"wheat": 1000, 
+	"wood": 1000, 
+	"wool": 1000, 
+	"coins": 1000
 }
 
 var housebuttonpressed = 0

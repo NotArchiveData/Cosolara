@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://cn33tt85swc6u"]
+[gd_scene load_steps=8 format=3 uid="uid://cn33tt85swc6u"]
 
 [ext_resource type="Script" path="res://House/gd/house_upgrader.gd" id="1_85jud"]
 
@@ -42,6 +42,15 @@ top_radius = 2.0
 bottom_radius = 2.5
 height = 1.0
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_70y7s"]
+albedo_color = Color(0.572549, 1, 1, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_ljm7p"]
+material = SubResource("StandardMaterial3D_70y7s")
+top_radius = 2.5
+bottom_radius = 2.5
+height = 1.0
+
 [node name="house_lv1" type="StaticBody3D"]
 collision_layer = 4
 collision_mask = 0
@@ -61,6 +70,11 @@ shape = SubResource("BoxShape3D_avul0")
 [node name="mound" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, -0.582, 2.08165e-12)
 mesh = SubResource("CylinderMesh_igemv")
+skeleton = NodePath("")
+
+[node name="mound2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 16.1114, 0, 0, 0, 1, 2.08165e-12, -8.582, 2.08165e-12)
+mesh = SubResource("CylinderMesh_ljm7p")
 skeleton = NodePath("")
 
 [node name="check_house" type="CollisionPolygon3D" parent="."]

@@ -98,4 +98,4 @@ look_around={
 3d_physics/layer_4="Road"
 3d_physics/layer_5="die"
 3d_physics/layer_15="world border"
-3d_physics/layer_16="die_wall_table"
+3d_physics/layer_16="die_table"
